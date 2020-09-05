@@ -140,12 +140,19 @@ route.post('/signup', (req, res) => {
                     password: hash_password,
                     valid: false,
                     logo: "https://res.cloudinary.com/shankygupta79/image/upload/v1599313879/logo_mcquc1.png",
-
+                    
                 }).then((user) => {
-
-                    sendmail(mailing_id, hash, 0);
-                    return res.send({ data: 'ms', email: req.body.email })
-
+                    
+                    Setting.create({
+                        userId:user.id,
+                    })
+                    .then((setting)=>{
+                        sendmail(mailing_id, hash, 0);
+                        return res.send({ data: 'ms', email: req.body.email })
+                    })
+                    .catch((err) => {
+                        console.log(err)
+                    })
                 }).catch((err) => {
                     console.log(err)
                     return res.send({ data: 'error' })
@@ -175,14 +182,14 @@ function sendmail(tomailid, hash, fp) {
             from: process.env.mail,
             to: tomailid,
             subject: 'Reset Your Password',
-            text: 'Reset your password by clicking on the link (link is valid upto five minutes only) ' + 'http://localhost:3420/forgot?id=' + hash + '&tm=' + tm + '&mail=' + tomailid,
+            text: 'Reset your password by clicking on the link (link is valid upto five minutes only) ' + 'https://payrollv2.herokuapp.com/forgot?id=' + hash + '&tm=' + tm + '&mail=' + tomailid,
         };
     } else if (fp == 0) {
         mailDetails = {
             from: process.env.mail,
             to: tomailid,
             subject: 'Activate Your Account',
-            text: 'Verify your account by clicking on the link ' + 'http://localhost:3420/activate?id=' + hash + '&mail=' + tomailid + '&tm=' + tm + ' .' + 'This Link will expire in 10 minutes',
+            text: 'Verify your account by clicking on the link ' + 'https://payrollv2.herokuapp.com/activate?id=' + hash + '&mail=' + tomailid + '&tm=' + tm + ' .' + 'This Link will expire in 10 minutes',
         };
     }
     // https://myaccount.google.com/lesssecureapps

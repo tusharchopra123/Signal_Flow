@@ -28,7 +28,7 @@ passport.deserializeUser((id, done) => {
 })
 passport.use(
     new GoogleStrategy({
-        callbackURL: "http://localhost:3420/auth/google/redirect",
+        callbackURL: "https://payrollv2.herokuapp.com/auth/google/redirect",
         clientID: process.env.clientIDg,
         clientSecret: process.env.clientSecretg
         //options for google strategy
@@ -50,16 +50,22 @@ passport.use(
                         emailId: profile._json.email,
                         authenticationType: 'Google',
                         logo: "https://res.cloudinary.com/shankygupta79/image/upload/v1599313879/logo_mcquc1.png",
-
+                        
 
                     }).then((newUser) => {
-
-                        console.log('new User Created', newUser)
-                        var user = [newUser.dataValues];
-                        console.log(user)
-                        done(null, user)
-
-
+                        Setting.create({
+                            userId:newUser.id,
+                        })
+                        .then((setting)=>{
+                            console.log('new User Created', newUser)
+                            var user = [newUser.dataValues];
+                            console.log(user)
+                            done(null, user)
+                        })
+                        .catch((err) => {
+                            console.log(err)
+                        })
+                        
                     }).catch((err) => {
                         console.log(err)
                     })
@@ -70,7 +76,7 @@ passport.use(
 passport.use(new FacebookStrategy({
     clientID: process.env.clientIDf,
     clientSecret: process.env.clientSecretf,
-    callbackURL: "http://localhost:3420/auth/facebook/redirect",
+    callbackURL: "https://payrollv2.herokuapp.com/auth/facebook/redirect",
     profileFields: ['id', 'displayName', 'photos', 'email']
 },
     function (accessToken, refreshToken, profile, done) {
@@ -96,14 +102,21 @@ passport.use(new FacebookStrategy({
                         emailId: profile._json.email,
                         authenticationType: 'Facebook',
                         logo: "https://res.cloudinary.com/shankygupta79/image/upload/v1599313879/logo_mcquc1.png",
-
+                        
                     }).then((newUser) => {
-
-                                console.log('new User Created', newUser)
-                                var user = [newUser.dataValues];
-                                console.log(user)
-                                done(null, user)
-                            
+                        
+                        Setting.create({
+                            userId:newUser.id,
+                        })
+                        .then((setting)=>{
+                            console.log('new User Created', newUser)
+                            var user = [newUser.dataValues];
+                            console.log(user)
+                            done(null, user)
+                        })
+                        .catch((err) => {
+                            console.log(err)
+                        })
                     }).catch((err) => {
                         console.log(err)
                     })

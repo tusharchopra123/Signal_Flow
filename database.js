@@ -50,7 +50,17 @@ const User = db.define('User_Os', {
         type: Sequelize.STRING
     },
 })
-
+const Setting = db.define('setting', {
+    userId:Sequelize.INTEGER,
+    name:Sequelize.STRING,
+    phone:Sequelize.STRING,
+    email:Sequelize.STRING,
+    website:Sequelize.STRING,
+    add:Sequelize.STRING,
+    state:Sequelize.STRING,
+    country:Sequelize.STRING,
+    
+})
 const Event = db.define('Event_OS',{
     E_Id:Sequelize.INTEGER,
     U_ID:Sequelize.INTEGER,
@@ -64,5 +74,5 @@ db.sync()
     .then(() => console.log("Database has been synced"))
     .catch((err) => console.error("Error creating database " + err))
 exports = module.exports = {
-    User,Event
+    User,Event,Setting
 }

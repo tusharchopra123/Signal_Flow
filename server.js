@@ -33,6 +33,7 @@ app.use('/login', require('./routes/login'));
 app.use('/dashboard', require('./routes/dashboard'));
 app.use('/navbar2', require('./routes/navbar2'));
 app.use('/images', require('./routes/images'));
+app.use('/settings', require('./routes/settings'));
 
 app.listen(SERVER_PORT, function () {
     console.log("Server started on https://...herokuapp.com/");
