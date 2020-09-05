@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Loan Entry</title>
+    <title>Add Task</title>
 </head>
 
 <body>
@@ -37,41 +37,47 @@
             <div id="content2" ref="content2">
 
                 <div class="bord">
-                    <div class="headin center">Add Loan Entry</div>
+                    <div class="headin center"><i class="fa fa-pencil" style="color:green"aria-hidden="true">  </i>  Add Single Task</div>
                     <div class="roww"></div>
                     <table class="report2">
+                        
+
                         <tr>
-                            <td><label class="radio-inline">
-                                    <input type="radio" v-model="optradio" value=0 name="optradio" checked>&nbsp;Give
-                                    Loan
-                                </label>
-                                &nbsp;&nbsp;<label class="radio-inline">
-                                    <input type="radio" v-model="optradio" value=1 name="optradio">&nbsp;Recieve
-                                </label></td>
+                            <td style="text-align: right;"><strong>Name : </strong></td>
+                            <td><input type="number" class="form-control" v-model="name" placeholder="Enter Name of task"></td>
                         </tr>
 
                         <tr>
-                            <td style="text-align: right;"><strong>Select Employee :</strong>
+                            <td style="text-align: right;"><strong>Duration (in mins) : </strong></td>
+                            <td><input type="number" class="form-control" v-model="duration" placeholder="Enter duration (in mins)"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;"><strong>Start Time : </strong></td>
+                            <td><input type="time" class="form-control" v-model="start"
+                                    placeholder="Start Time"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;"><strong>End Time : </strong></td>
+                            <td><input type="time" class="form-control" v-model="start"
+                                    placeholder="End Time" readonly></td>
+                        </tr>
 
-
+                        <tr>
+                            <td style="text-align: right;"><strong>Description : </strong></td>
+                            <td><textarea class="form-control" v-model="des"
+                                    placeholder="Add some Description"></textarea></td>
+                        </tr>
+                        <br>
+                        <tr>
+                            <td style="text-align: right;">
                             </td>
-                            <td><select class="form-control" v-model="select_emp">
-                                    <option style="color: black;" v-for="i in employee">{{i}}</option>
-                                </select></td>
-                        </tr>
 
-                        <tr>
-                            <td style="text-align: right;"><strong>Amount:</strong></td>
-                            <td><input type="number" class="form-control" v-model="amount" placeholder="Amount"></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;"><strong>Narration :</strong></td>
-                            <td><textarea class="form-control" v-model="message"
-                                    placeholder="Add some narration"></textarea></td>
-                        </tr>
-
-
-
+                                <td>
+                                <input type="checkbox" v-model="fix" class="form-check-input" id="exampleCheck1">
+                            
+                                
+                                <i class="form-check-label" for="exampleCheck1">Fix this Task</i>
+                            </td>
                         </tr>
                     </table>
                     <div v-if="error" class="error">
@@ -105,18 +111,20 @@
             el: "#Index",
             data: {
                 myArray: [],
-                amount: 0,
+                name:'',
+                start:'',
+                duration:0,
+                day:0,
+                fix:0,
+                des:'',
+                end:'',
                 success: 0,
                 error: 0,
                 idx: [],
                 message: "",
-                optradio: 0,
-                mon:['01','02','03','04','05','06','07','08','09','10','11','12'],
-                employee: [],
-                submit_cl : 1,
-                select_emp: '',
+
                 message_error: "Enter the full details",
-                message_success: "Attendace report loaded successfully",
+                message_success: "Page Loaded successfully",
 
             },
             created: function () {
@@ -125,20 +133,9 @@
             methods: {
                 load: function () {
                     $('#abc').hide();
-                    axios.get('http://localhost:3420/employee/api/quickemp')
-                        .then(function (Response1) {
-                            for (var i = 0; i < Response1.length; i++) {
-                                log.employee.push(Response1[i].name)
-                                log.idx.push(Response1[i].emp_id)
-                            }
-                            log.loaderoff()
-                        })
-                        .catch((err) => {
-                            console.log(err)
-                            log.error = 1
-                            log.message_error = "Error connecting the database try again later !"
-                            log.loaderoff()
-                        })
+                    setTimeout(function(){
+                        log.loaderoff();
+                    },500)
                 }, loaderoff() {
                     var app = this;
                     var loading = app.$refs.Loading
@@ -146,12 +143,16 @@
                     var content = app.$refs.content2
                     content.style.display = "block"
                 }, submit() {
-                    if(log.submit_cl==0){
-                        return
-                    }
-                    if (log.select_emp == '') {
+                    $('#mybtn').prop('disabled', true);
+                    if (log.name == '') {
                         log.error = 1;
-                        log.message_error = "Select a Employee !"
+                        log.message_error = "Please enter a valid name !"
+                        $('#mybtn').prop('disabled', false);
+                        return
+                    }if (log.duration <=0) {
+                        log.error = 1;
+                        log.message_error = "Please enter a valid duration !"
+                        $('#mybtn').prop('disabled', false);
                         return
                     }
                     log.error=0
@@ -163,19 +164,19 @@
                     }
                     $('#abc').show();
                     log.submit_cl=0
-                    $.post('./loanadd', {
-                        amount: log.amount,
-                        text: log.message,
-                        type:log.optradio,
-                        emp_id: log.idx[log.employee.indexOf(log.select_emp)],
-                        date: dt+"-"+log.mon[d.getMonth()]+"-"+d.getFullYear() ,
+                    $.post('./single', {
+                        name: log.name,
+                        start: log.start,
+                        duration:log.duartion,
+                        day:log.day,
+                        des:log.des,
+                        fix:log.fix,
                     }, function (data) {
                         console.log(data.message)
                         if (data.message != 'true') {
                             log.error = 1
                             log.message_error = data.message
-                            $('#mybtn').prop('disabled', false);
-                            $('#abc').hide();
+                            
                         } else {
                             log.error = 0
                             log.success = 1
@@ -184,6 +185,8 @@
                                 window.location.href = "entry"
                             }, 1000);
                         }
+                        $('#mybtn').prop('disabled', false);
+                        $('#abc').hide();
                     })
 
                 }

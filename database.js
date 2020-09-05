@@ -68,7 +68,8 @@ const Event = db.define('Event_OS',{
     start:Sequelize.INTEGER,
     duration : Sequelize.INTEGER,
     text:Sequelize.TEXT,
-    photo:Sequelize.STRING,
+    fix:Sequelize.INTEGER,
+    day:Sequelize.INTEGER,
 })
 db.sync()
     .then(() => console.log("Database has been synced"))

@@ -84,10 +84,10 @@ Vue.component('navbar-component',{
             <i class="fa fa-tasks" aria-hidden="true" style="color:green"></i>&nbsp Add Task</a>
             <ul class="collapse list-unstyled" id="employee" data-parent="#sidebar">
                 <li>
-                    <a href="http://localhost:3420/task/add_single"><i class="fa fa-ellipsis-h" style="color:green"aria-hidden="true"></i>&nbsp Add Single Task</a>
+                    <a href="http://localhost:3420/tasks/add_single"><i class="fa fa-ellipsis-h" style="color:green"aria-hidden="true"></i>&nbsp Add Single Task</a>
                 </li>
                 <li>
-                    <a href="http://localhost:3420/task/add_multiple"><i class="fa fa-ellipsis-h" style="color:green"aria-hidden="true"></i>&nbsp Add Multiple Task</a>
+                    <a href="http://localhost:3420/tasks/add_multiple"><i class="fa fa-ellipsis-h" style="color:green"aria-hidden="true"></i>&nbsp Add Multiple Task</a>
                 </li>
             </ul>
         </li>
