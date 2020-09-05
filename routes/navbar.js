@@ -8,7 +8,7 @@ Vue.component('navbar-component',{
             console.log(localStorage.getItem('panelTheme'))
             var val=(localStorage.getItem('panelTheme'));
             if(val=='Theme 1'){
-                //Blue
+                //Orange
             }else if(val=="Theme 2"){
                 //Black
                 $(':root').css('--navbar-color', 'black');
@@ -30,10 +30,11 @@ Vue.component('navbar-component',{
                 $(':root').css('--body', 'white');
                 $(':root').css('--text-hover', 'rgb(175, 91, 171)');
             }else if(val=="Theme 6"){
-                //Orange
-                $(':root').css('--navbar-color', 'orange');
+                //Blue
+                $(':root').css('--navbar-color', 'rgb(25, 51, 151)');
                 $(':root').css('--body', 'white');
-                $(':root').css('--text-hover', 'rgb(214, 163, 68)');
+                $(':root').css('--text-hover', 'rgb(95, 118, 212)');
+                
             }else if(val=="Theme 7"){
                 //White
                 $(':root').css('--navbar-color', 'rgb(165, 179, 182)');
@@ -224,7 +225,7 @@ Vue.component('navbar-top',{
     
     
     <div class="dropdown2" >
-      <button class="dropbtn"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:orange"></i>&nbsp 
+      <button class="dropbtn"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:blue"></i>&nbsp 
       Administrator 
         <i class="fa fa-caret-down"></i>
         </button>

@@ -113,6 +113,7 @@
                     this.none = localStorage.getItem('panelTheme')
                     axios.get('http://localhost:3420/settings/api/setting')
                         .then(function (Response1) {
+                            console.log(Response1)
                             log.photo=Response1[1]
                             log.loaderoff()
                         })
@@ -122,7 +123,6 @@
                             log.message_error="Error connecting the database try again later !"
                             
                         })
-                        log.loaderoff()
                 }, loaderoff() {
                     var app = this;
                     var loading = app.$refs.Loading
@@ -137,9 +137,9 @@
                         var val = value.text();
                         if (val == 'Theme 1') {
                             //Blue
-                            $(':root').css('--navbar-color', 'rgb(25, 51, 151)');
+                            $(':root').css('--navbar-color', 'orange');
                             $(':root').css('--body', 'white');
-                            $(':root').css('--text-hover', 'rgb(95, 118, 212)');
+                            $(':root').css('--text-hover', 'rgb(214, 163, 68)');
                         } else if (val == "Theme 2") {
                             //Black
                             $(':root').css('--navbar-color', 'black');
@@ -162,9 +162,9 @@
                             $(':root').css('--text-hover', 'rgb(175, 91, 171)');
                         } else if (val == "Theme 6") {
                             //Orange
-                            $(':root').css('--navbar-color', 'orange');
+                            $(':root').css('--navbar-color', 'rgb(25, 51, 151)');
                             $(':root').css('--body', 'white');
-                            $(':root').css('--text-hover', 'rgb(214, 163, 68)');
+                            $(':root').css('--text-hover', 'rgb(95, 118, 212)');
                         } else if (val == "Theme 7") {
                             //White
                             $(':root').css('--navbar-color', 'rgb(165, 179, 182)');

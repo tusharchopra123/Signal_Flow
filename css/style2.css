@@ -1,10 +1,11 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 :root {
-    --navbar-color: rgb(25, 51, 151);
+    --navbar-color: orange;
     --dropdown-box:whitesmoke ;
     --body:white;
     --text:white;
-    --text-hover:rgb(95, 118, 212);
+    --text-hover:rgb(214, 163, 68);
+    
 
    
     
