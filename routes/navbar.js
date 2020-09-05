@@ -73,7 +73,7 @@ Vue.component('navbar-component',{
     <div class="sidebar-header">
         <h3><img src="../Images/logo" class="logoi" ></h3>
     </div>
-
+        <br>
     <ul class="list-unstyled components" style="padding:0">
         <p>Welcome</p>
         <li>
@@ -81,88 +81,36 @@ Vue.component('navbar-component',{
         </li>
         <li >
             <a href="#employee" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-            <i class="fa fa-users" aria-hidden="true" style="color:green"></i>&nbsp Employee</a>
+            <i class="fa fa-tasks" aria-hidden="true" style="color:green"></i>&nbsp Add Task</a>
             <ul class="collapse list-unstyled" id="employee" data-parent="#sidebar">
                 <li>
-                    <a href="http://localhost:3420/employee/add_emp"><i class="fa fa-ellipsis-h" style="color:green"aria-hidden="true"></i>&nbsp Add Employee</a>
+                    <a href="http://localhost:3420/task/add_single"><i class="fa fa-ellipsis-h" style="color:green"aria-hidden="true"></i>&nbsp Add Single Task</a>
                 </li>
                 <li>
-                    <a href="http://localhost:3420/employee/manage_emp"><i class="fa fa-ellipsis-h" style="color:green"aria-hidden="true"></i>&nbsp Manage Employee</a>
+                    <a href="http://localhost:3420/task/add_multiple"><i class="fa fa-ellipsis-h" style="color:green"aria-hidden="true"></i>&nbsp Add Multiple Task</a>
                 </li>
             </ul>
         </li>
         <li >
             <a href="#department" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-            <i class="fa fa-fort-awesome" style="color:yellow" aria-hidden="true"></i>&nbsp Department</a>
+            <i class="fa fa-pencil-square-o" style="color:black" aria-hidden="true"></i>&nbsp Scheduler</a>
             <ul class="collapse list-unstyled" id="department" data-parent="#sidebar">
                 <li>
-                    <a href="http://localhost:3420/department/add_dep"><i class="fa fa-ellipsis-h" style="color:yellow"aria-hidden="true"></i>&nbsp Add Department</a>
-                </li>
-                <li>
-                    <a href="http://localhost:3420/department/manage_dep"><i class="fa fa-ellipsis-h" style="color:yellow"aria-hidden="true"></i>&nbsp Show Department</a>
+                    <a href="http://localhost:3420/scheduler"><i class="fa fa-ellipsis-h" style="color:black"aria-hidden="true"></i>&nbsp Scheduler</a>
                 </li>
             </ul>
         </li>
         <li >
-            <a href="#attendance" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-            <i class="fa fa-calendar-check-o" style="color:lightgreen" aria-hidden="true"></i>&nbsp Attendace</a>
-            <ul class="collapse list-unstyled" id="attendance" data-parent="#sidebar">
+            <a href="#concept" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="fa fa-fort-awesome" style="color:purple" aria-hidden="true"></i>&nbsp Concept</a>
+            <ul class="collapse list-unstyled" id="concept" data-parent="#sidebar">
                 <li>
-                    <a href="http://localhost:3420/attendance/daily_attendance"><i class="fa fa-ellipsis-h" style="color:lightgreen"aria-hidden="true"></i>&nbsp Daily Attendance</a>
-                </li>
-                <li>
-                    <a href="http://localhost:3420/attendance/attendance_report"><i class="fa fa-ellipsis-h" style="color:lightgreen"aria-hidden="true"></i>&nbsp Attendance Report</a>
+                    <a href="http://localhost:3420/concept"><i class="fa fa-ellipsis-h" style="color:purple"aria-hidden="true"></i>&nbsp Project File</a>
                 </li>
             </ul>
         </li>
-        <li >
-            <a href="#holiday" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-            <i class="fa fa-plane" aria-hidden="true" style="color:rgb(209, 137, 4)"></i>&nbsp Holidays</a>
-            <ul class="collapse list-unstyled" id="holiday" data-parent="#sidebar">
-                <li>
-                    <a href="http://localhost:3420/holiday/add_holiday"><i class="fa fa-ellipsis-h" style="color:rgb(209, 137, 4)"aria-hidden="true"></i>&nbsp Add Holiday</a>
-                </li>
-                <li>
-                    <a href="http://localhost:3420/holiday/manage_holiday"><i class="fa fa-ellipsis-h" style="color:rgb(209, 137, 4)"aria-hidden="true"></i>&nbsp Manage Holiday</a>
-                </li>
-            </ul>
-        </li>
-        <li >
-            <a href="#payslip" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-            <i class="fa fa-money" aria-hidden="true" style="color:lightblue"></i>&nbsp Salary Ledger</a>
-            <ul class="collapse list-unstyled" id="payslip" data-parent="#sidebar">
-                <li>
-                    <a href="http://localhost:3420/payslips/calc"><i class="fa fa-ellipsis-h" style="color:lightblue"aria-hidden="true"></i>&nbsp Salary Calculator</a>
-                </li>
-                <li>
-                    <a href="http://localhost:3420/payslips/list"><i class="fa fa-ellipsis-h" style="color:lightblue"aria-hidden="true"></i>&nbsp Payslip List</a>
-                </li>
-                <li>
-                    <a href="http://localhost:3420/payslips/ledger"><i class="fa fa-ellipsis-h" style="color:lightblue"aria-hidden="true"></i>&nbsp Ledger</a>
-                </li>
-                
-            </ul>
-        </li>
-        <li >
-            <a href="#loan" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-            <i class="fa fa-usd" aria-hidden="true" style="color:ivory"></i><i class="fa fa-usd" aria-hidden="true" style="color:ivory"></i>&nbsp Loans & Adv.</a>
-            <ul class="collapse list-unstyled" id="loan" data-parent="#sidebar">
-                
-                <li>
-                    <a href="http://localhost:3420/payslips/entry"><i class="fa fa-ellipsis-h" style="color:ivory"aria-hidden="true"></i>&nbsp Add Loan </a>
-                </li>
-                <li>
-                    <a href="http://localhost:3420/payslips/entry_adv"><i class="fa fa-ellipsis-h" style="color:ivory"aria-hidden="true"></i>&nbsp Add Advance </a>
-                </li>
-                <li>
-                    <a href="http://localhost:3420/payslips/loan"><i class="fa fa-ellipsis-h" style="color:ivory"aria-hidden="true"></i>&nbsp View Total Loans </a>
-                </li>
-                <li>
-                    <a href="http://localhost:3420/payslips/adv"><i class="fa fa-ellipsis-h" style="color:ivory"aria-hidden="true"></i>&nbsp View Total Adv. </a>
-                </li>
-                
-            </ul>
-        </li>
+        
+        
         <li >
             <a href="#setting" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
             <i class="fa fa-cogs" aria-hidden="true" style="color:rgb(196, 5, 5)"></i>&nbsp Settings</a>
@@ -175,18 +123,7 @@ Vue.component('navbar-component',{
                 </li>
             </ul>
         </li>
-        <li >
-            <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-            <i class="fa fa-user" aria-hidden="true" style="color:coral"></i>&nbsp Users</a>
-            <ul class="collapse list-unstyled" id="user" data-parent="#sidebar">
-                <li>
-                    <a href="http://localhost:3420/users/add_user"><i class="fa fa-ellipsis-h" style="color:coral"aria-hidden="true"></i>&nbsp Add User</a>
-                </li>
-                <li>
-                    <a href="http://localhost:3420/users/manage_user"><i class="fa fa-ellipsis-h" style="color:coral"aria-hidden="true"></i>&nbsp Manage User</a>
-                </li>
-            </ul>
-        </li>
+        
         
         
         
