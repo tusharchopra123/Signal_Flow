@@ -42,9 +42,13 @@
                          
                         Add Multiple Tasks</div>
                     <div class="roww"></div>
-                    <i class="fa fa-plus-square plus"  aria-hidden="true"> <b style="color: black;">Add Another Task</b></i>
+                    <div style="display: inline;">
+                    <i class="fa fa-plus-square plus" @click="add()" style="font-size: 1.5em;" aria-hidden="true"> </i>
+                    <b style="color: black;font-size: 1em;">Add Another Task</b>
+                </div>
                     <br>
-                    <table class="report2" v-for="i in myArray.length">
+                    <div class="xx"  v-for="i in myArray.length">
+                    <table class="report3">
 
 
                         <tr>
@@ -101,6 +105,7 @@
                             </td>
                         </tr>
                     </table>
+                </div>
                     <div v-if="error" class="error">
                         {{message_error}} !
                     </div> <br>
