@@ -65,7 +65,20 @@
     height: 350px;
 
 }
-
+.cardtask{
+    min-width: 28%;
+    max-width: 30%;
+    border: solid 1px #000000;
+    margin: 2% 1%;;
+    display: inline-block;
+    word-wrap:break-word;
+    border-radius: 10px;
+    padding: 1% 1%;
+}
+.cardtask .name{
+    display: block;
+    text-align: center;
+}
 @media (min-width:260px) and (max-width:814px){
     .sbox{
         width: 45%;

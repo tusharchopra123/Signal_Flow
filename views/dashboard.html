@@ -37,38 +37,31 @@
             <div id="content2" ref="content2">
                 <div class="bord">
                     <div class="headin center">Dashboard</div>
-                    <div class="roww"></div>
-                    <div v-if="error" class="error">
-                        {{message_error}} !
-                    </div> <br>
-                    <div class="sbox">
-                        <b>{{total}}</b>
-                        <i class="fa fa-users" style="color:green" aria-hidden="true"></i><br>
-                        Totol Employees
-                    </div>
-                    <div class="sbox">
-                        <b>{{department}}</b>
-                        <i class="fa fa-fort-awesome" style="color:rgb(255, 217, 0)" aria-hidden="true"></i><br>
-                        Departments &nbsp&nbsp&nbsp&nbsp&nbsp
-                    </div>
-                    <div class="sbox">
-                        <b>{{present}}</b>
-                        <i class="fa fa-user" style="color:blue" aria-hidden="true"></i><br>
-                        Present Today
-                    </div>
-                    <div class="sbox">
-                        <b>{{absent}}</b>
-                        <i class="fa fa-bed" style="color:red" aria-hidden="true"></i><br>
-                        Absent Today
-                    </div><br>
-                    <iframe
-                        src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=ZW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%237986CB&amp;mode=AGENDA&amp;showTz=0&amp;showCalendars=1&amp;showPrint=0"
-                        style="border:solid 1px #777" class="mbox" height="350" frameborder="0" scrolling="no"></iframe>
+                    <div class="cardtask" @click="edit(i.emp_id)" v-for="i in myArray">
+                        <b class="name">{{i.name}}</b>
+                        
+                        <!-- <img v-bind:src="i.photo" height="80px" width="80px"> -->
+                        <table class="tabman">
+                            <tr>
+                                <td><b>Day</b></td>
+                                <td>{{i.day}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Start Time</b></td>
+                                <td>{{i.start}}</td>
+                            </tr>
+                            <tr>
+                                <td> <b>Duration</b></td>
+                                <td>{{i.duration}}</td>
+                            </tr>
+                            <tr>
+                                <td> <b>Text</b></td>
+                                <td>{{i.text}}</td>
+                            </tr>
+                        </table>
+                        
 
-                    <div class="mbox2">
-                        <div style="display: table;" class="center">Attendance Analysis</div>
-                    <div id="chart" style="height: 330px;">
-                    </div>
+
                     </div>
                 </div>
             </div>
@@ -85,10 +78,10 @@
             el: "#Index",
             data: {
                 myArray: [],
-                total: 0,
-                present: 0,
-                department: 0,
-                absent: 0,
+                sortfield: 'Name',
+                message_error: "Dont leave empty response",
+                // sortarr: ['Name', 'Department', 'Designation', 'Date of Joining'],
+                // sortarr2: ['name', 'des', 'dep', 'doj'],
                 error:0,
                 message_error: "Some Error",
 
@@ -97,16 +90,14 @@
                 this.load();
             },
             methods: {
+                
                 load: function () { 
-                    axios.get('http://localhost:3420/dashboard/api/dash')
-                        .then(function (Response1) {
-                            console.log(Response1)
-                            log.total=Response1[0]
-                            log.department=Response1[1]
-                            log.present=Response1[2]
-                            log.absent=Response1[3]
+                    
+                    axios.get('http://localhost:3420/tasks/api/tasks')
+                        .then(function (tasks) {
+                            console.log(tasks)
+                            log.myArray = tasks
                             log.loaderoff()
-
                         })
                         .catch((err) => {
                             console.log(err)
@@ -114,6 +105,7 @@
                             log.message_error="Error connecting the database try again later !"
                             log.loaderoff()
                         })
+                    //  this.sort(this.sortfield);
                 }, loaderoff() {
                     var app = this;
                     var loading = app.$refs.Loading
