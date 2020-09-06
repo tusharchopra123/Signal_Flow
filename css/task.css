@@ -104,6 +104,9 @@ table{
     word-wrap: break-word;
 
 }
+.report2{
+    background-color: inherit !important;
+}
 .wow{
     display: none;
 }
@@ -153,7 +156,7 @@ td, th {
     padding: 1%;
 }
 
-tr:nth-child(odd) {
+.manage_task tr:nth-child(odd) {
     background: linear-gradient( rgb(199, 244, 250),rgb(240, 251, 255));
 }
 tr:hover{
@@ -200,7 +203,7 @@ img{
     width: 70%;
 }
 .report2 tr{
-    background-color: white;
+    background-color: inherit;
     border: none;
     padding: 4px;
 }
@@ -211,9 +214,10 @@ img{
     border:1
 }
 .report3{
+    background-color: inherit;
     width: 94%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 2%;
+    margin-right: 2%;
     width: 100%;
 }
 .report3 tr{
@@ -232,11 +236,12 @@ img{
     padding: 0px;
 }
 .report2 td{
-    background-color: white;
+    background-color: inherit;
     border: none;
     padding: 4px;
 }
 .report3 td{
+    background-color: inherit;
     border: none;
     padding: 4px;
 }
