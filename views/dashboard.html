@@ -44,7 +44,7 @@
                         <table class="tabman">
                             <tr>
                                 <td><b>Day</b></td>
-                                <td>{{i.day}}</td>
+                                <td>{{Days[i.day]}}</td>
                             </tr>
                             <tr>
                                 <td><b>Start Time</b></td>
@@ -55,8 +55,8 @@
                                 <td>{{i.duration}}</td>
                             </tr>
                             <tr>
-                                <td> <b>Text</b></td>
-                                <td>{{i.text}}</td>
+                                <td><span class="text1"><b>Text</b></span></td>
+                                <td><span class="text1">{{i.text}}</span></td>
                             </tr>
                         </table>
                         
@@ -78,6 +78,7 @@
             el: "#Index",
             data: {
                 myArray: [],
+                Days:['Any','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
                 sortfield: 'Name',
                 message_error: "Dont leave empty response",
                 // sortarr: ['Name', 'Department', 'Designation', 'Date of Joining'],

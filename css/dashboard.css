@@ -75,6 +75,26 @@
     border-radius: 10px;
     padding: 1% 1%;
 }
+.cardtask .tabman td{
+    padding:0px 5px;
+}
+.cardtask .tabman .text1{
+    display: none;
+}
+.cardtask:hover .tabman  .text1{
+    display: block;
+    padding-left: 0% !important;
+    width: 100%;
+    color: black !important;
+    background: inherit;
+}
+.cardtask .tabman span{
+    padding: 0px 0px !important;
+    text-decoration: none !important;
+    text-align: left !important;
+    float: none !important;
+    color:black !important;
+}
 .cardtask .name{
     display: block;
     text-align: center;
