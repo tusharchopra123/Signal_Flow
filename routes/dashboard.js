@@ -18,7 +18,6 @@ const authCheck = (req, res, next) => {
     
     xid = req.user[0].id
     alreadylogo=req.user[0].logo;
-    console.log(req.user);
     next()
   }
 }
