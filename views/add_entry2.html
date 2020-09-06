@@ -1,0 +1,262 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Add Task</title>
+</head>
+
+<body>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="http://localhost:3420/settings/style2">
+    <link rel="stylesheet" href="css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios@0.2.1/dist/axios.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+
+
+    <!-- Font Awesome JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+    <div id="Index" id="navba">
+        <navbar-component></navbar-component>
+        <div id="navbar-top">
+            <navbar-top></navbar-top>
+            <img src="../images/loading" id="Loading" ref="Loading">
+            <div id="content2" ref="content2">
+
+                <div class="bord">
+                    <div class="headin center"><i class="fa fa-pencil" style="color:green" aria-hidden="true"><i class="fa fa-pencil" style="color:green;font-size: 0.6em;" aria-hidden="true">
+                        <i class="fa fa-pencil" style="color:green;font-size: 0.5em;" aria-hidden="true"> </i> </i></i>
+                         
+                        Add Multiple Tasks</div>
+                    <div class="roww"></div>
+                    <div style="display: inline;">
+                    <i class="fa fa-plus-square plus" @click="add()" style="font-size: 1.5em;" aria-hidden="true"> </i>
+                    <b style="color: black;font-size: 1em;">Add Another Task</b>
+                </div>
+                    <br>
+                    <div class="xx"  v-for="i in myArray.length">
+                    <table class="report3">
+
+
+                        <tr>
+                            <td style="text-align: right;"><strong>Name : </strong></td>
+                            <td><input type="text" class="form-control" v-model="myArray[i-1].name" placeholder="Enter Name of task">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: right;"><strong>Duration (in mins) : </strong></td>
+                            <td><input type="number" class="form-control" v-model="myArray[i-1].duration"
+                                    placeholder="Enter duration (in mins)"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;"><strong>Start Time : </strong></td>
+                            <td><input type="time" class="form-control" v-model="myArray[i-1].start" placeholder="Start Time"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;"><strong>End Time : </strong></td>
+                            <td><input type="time" class="form-control" v-model="myArray[i-1].end" placeholder="End Time" readonly>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; text-align: right;">Day : </td>
+                            <td>
+                                <select class="inp-block form-control" class="form-control" placeholder="Enter Country"
+                                    v-model="myArray[i-1].day">
+                                    <option value="0">Any</option>
+                                    <option value="1">Monday</option>
+                                    <option value="2">Tuesday</option>
+                                    <option value="3">Wednesday</option>
+                                    <option value="4">Thursday</option>
+                                    <option value="5">Friday</option>
+                                    <option value="6">Saturday</option>
+                                    <option value="7">Sunday</option>
+                                </select>
+                            <td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;"><strong>Description : </strong></td>
+                            <td><textarea class="form-control" v-model="myArray[i-1].des"
+                                    placeholder="Add some Description"></textarea></td>
+                        </tr>
+                        <br>
+                        <tr>
+                            <td style="text-align: right;">
+                            </td>
+
+                            <td>
+                                <input type="checkbox" v-model="myArray[i-1].fix" class="form-check-input" id="exampleCheck1">
+
+
+                                <i class="form-check-label" for="exampleCheck1">Fix this Task</i>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                    <div v-if="error" class="error">
+                        {{message_error}} !
+                    </div> <br>
+                    <div v-if="success" class="success">
+                        {{message_success}} !
+                    </div>
+                    <div class="center">
+                        <button @click="submit()" style="padding: 5px 30px;" id="mybtn" class="btn btn-success">{{word}}
+                            &nbsp;&nbsp;<i class="fa fa-spinner fa-spin" id='abc'></i>
+                        </button>
+                    </div>
+                    <div class="center headin"></div>
+                    <div class="row"></div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="http://localhost:3420/navbar2"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script>
+        var log = new Vue({
+            el: "#Index",
+            data: {
+                myArray: [{name:'',start:'',duration:0,day:0,fix:0,des:''}],
+                
+                word:'Add Tasks',
+                success: 0,
+                error: 0,
+                idx: [],
+                message: "",
+                message_error: "Enter the full details",
+                message_success: "Page Loaded successfully",
+
+            },
+            computed: {
+                // a computed getter
+                end: function () {
+                    // `this` points to the vm instance
+                    var h=parseInt(this.start.slice(0,2));
+                    var min=parseInt(this.start.slice(3,5));
+                    h=h+(this.duration/60);
+                    min=min+this.duration%60;
+                    if(min>60){
+                        h=h+1;
+                        min=min%60;
+                    }
+                    if(min==60){
+                        min=0;
+                        h=h+1;
+                    }
+                    if(h<10){
+                        h='0'+h;
+                    }
+                    if(min<10){
+                        min='0'+min;
+                    }
+                    if(h>24){
+                        this.message_error=" Task should end in the same day !";
+                        this.error=1;
+                        $('#mybtn').prop('disabled', true);
+                    }else{
+                        this.error=0;
+                        $('#mybtn').prop('disabled', false);
+                    }
+                    console.log(h+":"+min)
+                    return (Math.floor(h)+":"+min);
+                }
+            },
+            created: function () {
+                this.load();
+            },
+            methods: {
+                load: function () {
+                    $('#abc').hide();
+                    setTimeout(function () {
+                        log.loaderoff();
+                    }, 500)
+                }, loaderoff() {
+                    var app = this;
+                    var loading = app.$refs.Loading
+                    loading.style.display = "none"
+                    var content = app.$refs.content2
+                    content.style.display = "block"
+                },add(){
+                    log.myArray.push({name:'',start:'',duration:0,day:0,fix:0,des:''});
+                },submit() {
+                    $('#mybtn').prop('disabled', true);
+                    for(var i=0;i<log.myArray.length;i++){
+                    if (log.myArray[i].name == '') {
+                        log.error = 1;
+                        log.message_error = "Please enter a valid name in Task "+ (i+1)+" ! "
+                        $('#mybtn').prop('disabled', false);
+                        return;
+                    } if (log.myArray[i].duration <= 0) {
+                        log.error = 1;
+                        log.message_error = "Please enter a valid duration in Task "+ (i+1)+" ! "
+                        $('#mybtn').prop('disabled', false);
+                        return;
+                    }if(log.myArray[i].fix==1){
+                        if(log.myArray[i].start==''){
+                            log.error = 1;
+                            log.message_error = "Please enter a valid starting time in Task "+ (i+1)+" ! "
+                            $('#mybtn').prop('disabled', false);
+                            return;
+                        }
+                    }
+                    if(log.des==''){
+                        log.des='No Comments'
+                    }}
+                    log.error = 0
+
+                    log.word='Adding...'
+                    $('#abc').show();
+                    $.post('./add_task2', {
+                        arr:log.myArray,
+                    }, function (data) {
+                        console.log(data.message)
+                        if (data.message != 'true') {
+                            log.error = 1
+                            log.message_error = data.message
+                            log.word="Add Again"
+
+                        } else {
+                            log.error = 0
+                            log.success = 1
+                            log.message_success = "Task Added SuccessFully !"
+                            setTimeout(() => {
+                                window.location.href = "manage_tasks"
+                            }, 1000);
+                        }
+                        $('#mybtn').prop('disabled', false);
+                        $('#abc').hide();
+                    })
+
+                }
+            }
+
+
+        })
+
+
+    </script>
+
+    <script src="http://localhost:3420/navbar2/collapsing"></script>
+</body>
+
+</html>

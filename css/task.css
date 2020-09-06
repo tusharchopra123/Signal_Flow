@@ -111,6 +111,14 @@ table{
     width: 80px;
 
 }
+.plus{
+    color: red;
+    font-size: 2em;
+}
+.plus:hover{
+    cursor: pointer;
+    color:rgb(226, 8, 8)
+}
 .hey180{
     width: 180px !important;
 }
@@ -166,6 +174,7 @@ tr:hover{
     margin: 2px;
     padding: 5px;
 }
+
 img{
     border-radius: 50px;
 }
@@ -195,6 +204,23 @@ img{
     border: none;
     padding: 4px;
 }
+.xx{
+    border-radius: 40px;
+    width: 40%;
+    display: inline-block;
+    border:1
+}
+.report3{
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.report3 tr{
+    background-color: inherit;
+    border: none;
+    padding: 4px;
+}
 
 .options{
     display: inline-block;
@@ -207,6 +233,10 @@ img{
 }
 .report2 td{
     background-color: white;
+    border: none;
+    padding: 4px;
+}
+.report3 td{
     border: none;
     padding: 4px;
 }
