@@ -9,6 +9,7 @@ Vue.component('navbar-component',{
             var val=(localStorage.getItem('panelTheme'));
             if(val=='Theme 1'){
                 //Orange
+                
             }else if(val=="Theme 2"){
                 //Black
                 $(':root').css('--navbar-color', 'black');

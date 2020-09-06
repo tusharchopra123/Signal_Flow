@@ -1,10 +1,10 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 :root {
-    --navbar-color: orange;
+    --navbar-color: #27233A;
     --dropdown-box:whitesmoke ;
-    --body:white;
-    --text:white;
-    --text-hover:rgb(214, 163, 68);
+    --body:#DCC48E;
+    --text:#EAEFD3;
+    --text-hover:#505168;
 }
 body {
     font-family: 'Poppins', sans-serif;
