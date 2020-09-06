@@ -200,39 +200,34 @@
                     log.myArray.push({name:'',start:'',duration:0,day:0,fix:0,des:''});
                 },submit() {
                     $('#mybtn').prop('disabled', true);
-                    if (log.name == '') {
+                    for(var i=0;i<log.myArray.length;i++){
+                    if (log.myArray[i].name == '') {
                         log.error = 1;
-                        log.message_error = "Please enter a valid name !"
+                        log.message_error = "Please enter a valid name in Task "+ (i+1)+" ! "
                         $('#mybtn').prop('disabled', false);
                         return;
-                    } if (log.duration <= 0) {
+                    } if (log.myArray[i].duration <= 0) {
                         log.error = 1;
-                        log.message_error = "Please enter a valid duration !"
+                        log.message_error = "Please enter a valid duration in Task "+ (i+1)+" ! "
                         $('#mybtn').prop('disabled', false);
                         return;
-                    }if(log.fix==1){
-                        if(log.start==''){
+                    }if(log.myArray[i].fix==1){
+                        if(log.myArray[i].start==''){
                             log.error = 1;
-                            log.message_error = "Please enter a valid starting time !"
+                            log.message_error = "Please enter a valid starting time in Task "+ (i+1)+" ! "
                             $('#mybtn').prop('disabled', false);
                             return;
                         }
                     }
                     if(log.des==''){
                         log.des='No Comments'
-                    }
+                    }}
                     log.error = 0
 
                     log.word='Adding...'
                     $('#abc').show();
-                    $.post('./add_task', {
-                        name: log.name,
-                        start: log.start,
-                        end: log.end,
-                        duration: log.duration,
-                        day: log.day,
-                        des: log.des,
-                        fix: (log.fix+0),
+                    $.post('./add_task2', {
+                        arr:log.myArray,
                     }, function (data) {
                         console.log(data.message)
                         if (data.message != 'true') {
@@ -245,7 +240,7 @@
                             log.success = 1
                             log.message_success = "Task Added SuccessFully !"
                             setTimeout(() => {
-                                window.location.href = "add_multiple"
+                                window.location.href = "manage_tasks"
                             }, 1000);
                         }
                         $('#mybtn').prop('disabled', false);

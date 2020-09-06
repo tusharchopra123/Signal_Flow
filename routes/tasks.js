@@ -37,7 +37,29 @@ route.get('/edit_task', authCheck, (req, res) => {
 route.get('/css', (req, res) => {
   res.sendFile(path.join(__dirname, '../css/task.css'))
 })
+function cr(arr) {
+  if(arr.fix=='true'){
+    arr.fix=1;
+  }
+  return Task.create({
+    U_ID: xid,
+    name: arr.name,
+    start: arr.start,
+    duration: arr.duration,
+    day: arr.day,
+    text: arr.des,
+    fix: arr.fix,
+    end: arr.end,
 
+  }).then((hol) => {
+    console.log("Task Added Successfully !")
+    return true
+
+  }).catch((err) => {
+    console.log(err)
+    false
+  })
+}
 route.post('/add_task', authCheck, (req, res) => {
   console.log("Hey IN Add")
   Task.create({
@@ -59,6 +81,22 @@ route.post('/add_task', authCheck, (req, res) => {
     return res.send({
       message: "Some Error Occured in our Database ! "
     })
+  })
+})
+route.post('/add_task2', authCheck,async (req, res) => {
+  console.log("Hey IN Add Mul")
+  for (var i = 0; i < req.body.arr.length; i++) {
+    var a = await cr(req.body.arr[i])
+    if (a == true) {
+
+    }else{
+      return res.send({
+        message: "Error in Task "+(i+1)+" ! "
+      })
+    }
+  }
+  return res.send({
+    message: "true"
   })
 })
 route.get('/api/tasks', authCheck, (req, res) => {
