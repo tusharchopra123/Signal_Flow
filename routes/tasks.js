@@ -1,5 +1,5 @@
 const route = require('express').Router()
-const Holiday = require('../database').Task
+const Task = require('../database').Task
 const path = require('path')
 function isEmpty(obj) {
   for (var key in obj) {
@@ -9,65 +9,46 @@ function isEmpty(obj) {
   return true;
 }
 var xid = 0;
-const authCheckview = (req, res, next) => {
+const authCheck = (req, res, next) => {
   if (isEmpty(req.user)) {
     //user is not logged in
     res.redirect('/login')
   } else {
-    if (req.user[0].admin == '0') {
-      xid = req.user[0].userId
-      var y = req.user[0].access.split(';')
-      if (y[6] == 'false') {
-
-        res.redirect('../users/lock')
-      }
-    } else {
+    
       xid = req.user[0].id
-    }
+
     console.log(xid)
     next()
   }
 }
-const authCheckedit = (req, res, next) => {
-  if (isEmpty(req.user)) {
-    //user is not logged in
-    res.redirect('/login')
-  } else {
-    if (req.user[0].admin == '0') {
-      xid = req.user[0].userId
-      var y = req.user[0].access.split(';')
-      if (y[7] == 'false') {
-        return res.send({ message: "You dont have access to edit " })
-      }
-    }else{
-      xid = req.user[0].id
-    }
-    next()
-  }
-}
-route.get('/add_single', authCheckview, (req, res) => {
+
+route.get('/add_single', authCheck, (req, res) => {
   res.sendFile(path.join(__dirname, '../views/add_entry.html'))
 })
-route.get('/add_multiple', authCheckview, (req, res) => {
+route.get('/add_multiple', authCheck, (req, res) => {
   res.sendFile(path.join(__dirname, '../views/add_entry2.html'))
 })
-route.get('/edit_task', authCheckview, (req, res) => {
+route.get('/edit_task', authCheck, (req, res) => {
   res.sendFile(path.join(__dirname, '../views/edit_task.html'))
 })
 route.get('/css', (req, res) => {
   res.sendFile(path.join(__dirname, '../css/task.css'))
 })
 
-route.post('/add_task', authCheckedit, (req, res) => {
-  console.log("Hey")
-  Holiday.create({
-    userId: xid,
+route.post('/add_task', authCheck, (req, res) => {
+  console.log("Hey IN Add")
+  Task.create({
+    U_ID: xid,
     name: req.body.name,
-    year: req.body.year,
-    date: req.body.date,
+    start: req.body.start,
+    duration: req.body.duration,
+    day:req.body.day,
+    text:req.body.des,
+    fix:req.body.fix,
+    end: req.body.end,
 
   }).then((hol) => {
-    console.log("Holiday Created Successfully !")
+    console.log("Task Added Successfully !")
     return res.send({ message: 'true' })
 
   }).catch((err) => {
@@ -77,35 +58,35 @@ route.post('/add_task', authCheckedit, (req, res) => {
     })
   })
 })
-route.get('/api/holiday', authCheckview, (req, res) => {
+route.get('/api/tasks', authCheck, (req, res) => {
   console.log(req.query.id)
   if (req.query.id > 0) {
-    Holiday.findOne({ where: { hol_id: req.query.id } })
+    Task.findOne({ where: { id: req.query.id } })
       .then((emps) => {
         res.status(200).send(emps)
       })
       .catch((err) => {
         console.log(err)
         return res.send({
-          message: "Could not retrive users"
+          message: "Could not retrive tasks"
         })
       })
   } else {
-    Holiday.findAll({ where: { userId: xid } })
+    Task.findAll({ where: { U_ID: xid } })
       .then((emps) => {
         res.status(200).send(emps)
       })
       .catch((err) => {
         console.log(err)
         return res.send({
-          message: "Could not retrive users"
+          message: "Could not retrive tasks"
         })
       })
   }
 
 
 })
-route.post('/edit_holpost', authCheckedit, (req, res) => {
+route.post('/edit', authCheck, (req, res) => {
   console.log(req.query.id + " IN EDIT")
   Holiday.update({
     holname: req.body.name,
@@ -121,14 +102,14 @@ route.post('/edit_holpost', authCheckedit, (req, res) => {
     })
   })
 })
-route.post('/delete', authCheckedit, (req, res) => {
+route.post('/delete', authCheck, (req, res) => {
   console.log(req.query.id + " IN Delete")
-  Holiday.destroy({
+  Task.destroy({
     where: {
       hol_id: req.query.id
     }
   }).then((user) => {
-    console.log("Holiday Deleted Successfully !")
+    console.log("Task Deleted Successfully !")
     return res.send({ message: 'true' })
 
   }).catch((err) => {

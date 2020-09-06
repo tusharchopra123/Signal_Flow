@@ -125,7 +125,6 @@ route.post('/signup', (req, res) => {
     hash = hash_password;
     User.findOne({ where: { emailId: req.body.email } })
         .then((user) => {
-            console.log(user)
             if (!isEmpty(user)) {
                 var users = [user.dataValues];
                 if (users[0].authenticationType == 'Google') {
