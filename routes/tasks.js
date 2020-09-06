@@ -14,8 +14,8 @@ const authCheck = (req, res, next) => {
     //user is not logged in
     res.redirect('/login')
   } else {
-    
-      xid = req.user[0].id
+
+    xid = req.user[0].id
 
     console.log(xid)
     next()
@@ -27,6 +27,9 @@ route.get('/add_single', authCheck, (req, res) => {
 })
 route.get('/add_multiple', authCheck, (req, res) => {
   res.sendFile(path.join(__dirname, '../views/add_entry2.html'))
+})
+route.get('/manage_tasks', authCheck, (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/manage_tasks.html'))
 })
 route.get('/edit_task', authCheck, (req, res) => {
   res.sendFile(path.join(__dirname, '../views/edit_task.html'))
@@ -42,9 +45,9 @@ route.post('/add_task', authCheck, (req, res) => {
     name: req.body.name,
     start: req.body.start,
     duration: req.body.duration,
-    day:req.body.day,
-    text:req.body.des,
-    fix:req.body.fix,
+    day: req.body.day,
+    text: req.body.des,
+    fix: req.body.fix,
     end: req.body.end,
 
   }).then((hol) => {
@@ -86,19 +89,24 @@ route.get('/api/tasks', authCheck, (req, res) => {
 
 
 })
-route.post('/edit', authCheck, (req, res) => {
+route.post('/edit_tsk', authCheck, (req, res) => {
   console.log(req.query.id + " IN EDIT")
-  Holiday.update({
-    holname: req.body.name,
-    date: req.body.date,
-  }, { where: { hol_id: req.query.id } }).then((user) => {
-    console.log("Holiday Edited Successfully !")
+  Task.update({
+    name: req.body.name,
+    start: req.body.start,
+    duration: req.body.duration,
+    day: req.body.day,
+    text: req.body.des,
+    fix: req.body.fix,
+    end: req.body.end,
+  }, { where: { id: req.query.id } }).then((user) => {
+    console.log("Task Edited Successfully !")
     return res.send({ message: 'true' })
 
   }).catch((err) => {
     console.log(err)
     return res.send({
-      message: "Could not retrive holidays"
+      message: "Could not retrive the database"
     })
   })
 })
@@ -106,7 +114,7 @@ route.post('/delete', authCheck, (req, res) => {
   console.log(req.query.id + " IN Delete")
   Task.destroy({
     where: {
-      hol_id: req.query.id
+      id: req.query.id
     }
   }).then((user) => {
     console.log("Task Deleted Successfully !")
@@ -115,7 +123,7 @@ route.post('/delete', authCheck, (req, res) => {
   }).catch((err) => {
     console.log(err)
     return res.send({
-      message: "Could not retrive holidays"
+      message: "Could not retrive tasks for deletion !"
     })
   })
 })
