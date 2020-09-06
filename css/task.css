@@ -111,6 +111,14 @@ table{
     width: 80px;
 
 }
+.plus{
+    color: red;
+    font-size: 2em;
+}
+.plus:hover{
+    cursor: pointer;
+    box-shadow: grey;
+}
 .hey180{
     width: 180px !important;
 }
@@ -166,6 +174,7 @@ tr:hover{
     margin: 2px;
     padding: 5px;
 }
+
 img{
     border-radius: 50px;
 }
@@ -188,7 +197,7 @@ img{
     padding: 0;
 }
 .report2{
-    width: 70%;
+    width: 45%;
 }
 .report2 tr{
     background-color: white;
