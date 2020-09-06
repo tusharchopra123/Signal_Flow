@@ -116,11 +116,9 @@
     font-size: 3em;
     float: right;
 }
-
 .center{
     text-align: center;
 }
-
 .mbox{
     display: inline-block;
     width: 45%;

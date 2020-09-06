@@ -21,6 +21,12 @@ route.get('/login', (req, res) => {
 route.get('/lovebird', (req, res) => {
     res.redirect('http://3.7.181.22/')
 })
+route.get('/concept', (req, res) => {
+    res.sendFile(path.join(__dirname, '../views/concept.html'))
+})
+route.get('/concept/project.pdf',(req,res)=>{
+    res.sendFile(path.join(__dirname, '../files/project.pdf'))
+})
 route.get('/slip', (req, res) => {
     res.sendFile(path.join(__dirname, '../views/CO_SLIP2.html'))
 })
