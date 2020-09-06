@@ -2,8 +2,8 @@
 :root {
     --navbar-color: #27233A;
     --dropdown-box:whitesmoke ;
-    --body:#DCC48E;
-    --text:#EAEFD3;
+    --body:#EAEFD3;
+    --text:#DCC48E;
     --text-hover:#505168;
 }
 body {

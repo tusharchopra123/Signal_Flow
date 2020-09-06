@@ -11,9 +11,10 @@ Vue.component('navbar-component', {
                 //Orange
             } else if (val == "Theme 2") {
                 //Black
-                $(':root').css('--navbar-color', 'black');
-                $(':root').css('--body', 'lightgrey');
-                $(':root').css('--text-hover', 'rgb(36, 36, 40)');
+                            $(':root').css('--navbar-color', '#000000');
+                            $(':root').css('--text','#8CFF98')
+                            $(':root').css('--body', '#8CFF98');
+                            $(':root').css('--text-hover', '#483519');
             } else if (val == "Theme 3") {
                 //Red
                 $(':root').css('--navbar-color', 'red');
