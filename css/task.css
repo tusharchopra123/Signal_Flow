@@ -209,16 +209,20 @@ img{
 }
 .xx{
     border-radius: 40px;
-    width: 40%;
+    width: 50%;
     display: inline-block;
     border:1
 }
 .report3{
     background-color: inherit;
     width: 94%;
+    max-width: 94%;
     margin-left: 2%;
     margin-right: 2%;
     width: 100%;
+}
+.report3 textarea{
+    max-width: 100vw;
 }
 .report3 tr{
     background-color: inherit;

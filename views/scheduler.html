@@ -37,9 +37,15 @@
                 <div class="bord">
                     <div class="headin center">Scheduler</div>
                     <div class="roww"></div>
+<<<<<<< HEAD
                     <table class="table1">
                         <tr>
                             <th v-for="i in 24">
+=======
+                    <table class="table1" cellspacing="0" cellpadding="0">
+                        <tr >
+                            <th class='th1'v-for="i in 24">
+>>>>>>> ad62ce70d11137fa03127fa5fb3d4b571f68dc98
                                 {{i-1}} A.M - {{i}} A.M
                             </th>
 
@@ -87,7 +93,7 @@
             },
             methods: {
                 load: function () {
-
+                    $(':root').css('--border', '1px solid black;');
                     axios.get('http://localhost:3420/tasks/api/tasks')
                         .then(function (Response1) {
                             for (var i = 0; i < 24 * 60; i++) {
