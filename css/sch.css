@@ -52,19 +52,19 @@
     font-family: arial, sans-serif;
     border-collapse: collapse;
     font-size: 18px;
+    display: block;
     align-content: center;
-    font-family: HelveticaNeueW01-Thin,HelveticaNeueW02-Thin,HelveticaNeueW10-35Thin,sans-serif;
-    overflow-x: scroll !important;
+    font-family:HelveticaNeueW01-Thin,HelveticaNeueW02-Thin,HelveticaNeueW10-35Thin,sans-serif;
+    overflow-x:scroll  !important;
     word-wrap: break-word;
-    max-width: 95% !important;
-    overflow: hidden;
+    max-width: 75vw !important;
+    scroll-behavior: smooth;
 
 }
 .td1, .th1 {
     max-width: 100px !important;
     border: 1px solid #dddddd;
     text-align: left;
-    
 }
 
 @media (min-width:260px) and (max-width:814px){

@@ -67,7 +67,7 @@ a:focus {
 }
 
 #sidebar ul p {
-    color: #fff;
+    color: var(--text);
     text-align: center;
     padding: 0px;
     margin: 0 !important;  
