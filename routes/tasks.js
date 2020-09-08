@@ -34,12 +34,21 @@ route.get('/manage_tasks', authCheck, (req, res) => {
 route.get('/edit_task', authCheck, (req, res) => {
   res.sendFile(path.join(__dirname, '../views/edit_task.html'))
 })
+route.get('/scheduler', authCheck, (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/scheduler.html'))
+})
+route.get('/css_sch', (req, res) => {
+  res.sendFile(path.join(__dirname, '../css/sch.css'))
+})
 route.get('/css', (req, res) => {
   res.sendFile(path.join(__dirname, '../css/task.css'))
 })
 function cr(arr) {
   if(arr.fix=='true'){
     arr.fix=1;
+  }
+  if(arr.des==""){
+    arr.des="No Comments !"
   }
   return Task.create({
     U_ID: xid,

@@ -101,7 +101,7 @@ Vue.component('navbar-component', {
                     <a href="http://localhost:3420/tasks/manage_tasks"><i class="fa fa-ellipsis-h" style="color:black"aria-hidden="true"></i>&nbsp Manage Tasks</a>
             </li>    
             <li>
-                    <a href="http://localhost:3420/scheduler"><i class="fa fa-ellipsis-h" style="color:black"aria-hidden="true"></i>&nbsp Scheduler</a>
+                    <a href="http://localhost:3420/tasks/scheduler"><i class="fa fa-ellipsis-h" style="color:black"aria-hidden="true"></i>&nbsp Scheduler</a>
                 </li>
             </ul>
         </li>

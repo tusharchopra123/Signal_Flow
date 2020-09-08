@@ -35,7 +35,7 @@ passport.use(
     }, (accessToken, refreshToken, profile, done) => {
         console.log("passport callback function fired ")
         console.log(profile)
-        User.findAll({ where: { userId: profile.id, authenticationType: 'Google' } })
+        User.findAll({ where: { U_Id: profile.id, authenticationType: 'Google' } })
             .then((currentUser) => {
                 if (!isEmpty(currentUser)) {
                     //already user exist
@@ -44,7 +44,7 @@ passport.use(
                     done(null, currentUser)
                 } else {
                     User.create({
-                        userId: profile.id,
+                        U_Id: profile.id,
                         fullname: profile.displayName,
                         thumbnail: profile._json.picture,
                         emailId: profile._json.email,
@@ -84,7 +84,7 @@ passport.use(new FacebookStrategy({
         console.log(profile)
         console.log(profile.id)
         console.log(profile._json.picture.data)
-        User.findAll({ where: { userId: profile.id, authenticationType: 'Facebook' } })
+        User.findAll({ where: { U_Id: profile.id, authenticationType: 'Facebook' } })
             .then((currentUser) => {
                 console.log(currentUser)
                 if (!isEmpty(currentUser)) {
@@ -96,7 +96,7 @@ passport.use(new FacebookStrategy({
                     done(null, currentUser)
                 } else {
                     User.create({
-                        userId: profile.id,
+                        U_Id: profile.id,
                         fullname: profile.displayName,
                         thumbnail: profile._json.picture.data.url,
                         emailId: profile._json.email,
