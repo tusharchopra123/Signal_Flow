@@ -37,6 +37,7 @@
                 <div class="bord">
                     <div class="headin center">Scheduler</div>
                     <div class="roww"></div>
+                    <div class="tabledummy">
                     <table class="table1" cellspacing="0" cellpadding="0">
                         <tr >
                             <th class='th1'v-for="i in 24">
@@ -47,15 +48,16 @@
                         <tr v-for="day in 7">
                             <td v-for="i in 24" class="td1" >
                                 
-                                <i v-for="a in 60" >
-                                    <span v-bind:style="{ backgroundColor: myArray[time[(i-1)*60+a]].color }"  style="display: inline;" v-if="time[(i-1)*60+a]>1">
+                                <span v-for="a in 60" >
+                                    <span v-bind:style="{ backgroundColor: myArray[time[(i-1)*60+a]].color }"  style="display: inline-block;width:0.8vw;" v-if="time[(i-1)*60+a]>1">
                                         <b v-if="mame[(i-1)*60+a]!=' '">{{mame[(i-1)*60+a]}}</b><b v-else>&nbsp;</b></span>
-                                    <span style="display:inline;font-size: 18px;" v-else><b v-if="a%3==0">&nbsp</b></span>
-                                </i>
+                                    <span style="display:inline-block;width:0.8vw;font-size: 18px;" v-else><b v-if="a%3==0">&nbsp</b></span>
+                                </span>
 
                             </td>
                         </tr>
                     </table>
+                </div>
                 </div>
             </div>
         </div>

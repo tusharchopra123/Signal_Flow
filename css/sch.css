@@ -14,7 +14,6 @@
 .roww{
     padding: 15px 10px;
     border-top: 1px solid black;
-    
 }  
 .headin{
     font-weight: bold;
@@ -55,21 +54,31 @@
     display: block;
     align-content: center;
     font-family:HelveticaNeueW01-Thin,HelveticaNeueW02-Thin,HelveticaNeueW10-35Thin,sans-serif;
-    overflow-x:scroll  !important;
     word-wrap: break-word;
     max-width: 75vw !important;
     scroll-behavior: smooth;
+    table-layout: fixed;
+    display: table;
+    overflow:scroll  !important;
+    width: 75vw; 
+    Zoom : 0.7;
 }
 .td1, .th1 {
     line-height: 50px;
-    min-width: 100% !important;
-    border: var(--border);
+    width: 48vw !important;
+    border: 2px solid black;
     padding:0px !important;
     text-align: left;    
+    white-space: nowrap;
+    display: table-cell;
 }
 
 .td1 div{
     padding:0px !important;
+}
+.tabledummy{
+    max-width: 75vw;
+    overflow-x:scroll;
 }
 body{
     margin: 0px !important;
