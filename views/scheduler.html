@@ -37,19 +37,18 @@
                 <div class="bord">
                     <div class="headin center">Scheduler</div>
                     <div class="roww"></div>
-                    <table class="table1">
+                    <table class="table1" cellspacing="0" cellpadding="0">
                         <tr >
-                            <th v-for="i in 24">
+                            <th class='th1'v-for="i in 24">
                                 {{i-1}} A.M - {{i}} A.M
                             </th>
                             
                         </tr>
                         <tr v-for="day in 7">
                             <td v-for="i in 24" class="td1">
-                                
-                                <i v-for="a in 60" style="min-width: 2px;overflow: hidden;">
-                                    <div style="background-color: cornflowerblue;display: inline-block;" v-if="time[(i-1)*60+a]>1">.</div>
-                                    <div style="display:inline ;" v-else>.</div>
+                                <i v-for="a in 60">
+                                    <span style="background-color: cornflowerblue;" v-if="time[(i-1)*60+a]>1">&nbsp</span>
+                                    <span style="font-size:18px;" v-else><b v-if ="a%2==0">&nbsp</b></span>
                                 </i>
 
                             </td>
