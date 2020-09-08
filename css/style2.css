@@ -174,7 +174,7 @@ a.article:hover {
     overflow: hidden;
 }
 
-.navbarr a:hover,span:hover,.dropdown2 a:hover :not(#i){
+.navbarr a:hover, span:hover,.dropdown2 a:hover :not(#i){
     background-color: var(--navbar-color);
     color: var(--text); 
 }
