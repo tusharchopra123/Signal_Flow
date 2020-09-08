@@ -57,12 +57,12 @@
 
                         <tr>
                             <td style="text-align: right;"><strong>Duration (in mins) : </strong></td>
-                            <td><input type="number" class="form-control" v-model="myArray[i-1].duration"
+                            <td><input type="number" class="form-control" @change="calc(i-1)" v-model="myArray[i-1].duration"
                                     placeholder="Enter duration (in mins)"></td>
                         </tr>
                         <tr>
                             <td style="text-align: right;"><strong>Start Time : </strong></td>
-                            <td><input type="time" class="form-control" v-model="myArray[i-1].start" placeholder="Start Time"></td>
+                            <td><input type="time" class="form-control" @change="calc(i-1)" v-model="myArray[i-1].start" placeholder="Start Time"></td>
                         </tr>
                         <tr>
                             <td style="text-align: right;"><strong>End Time : </strong></td>
@@ -134,7 +134,7 @@
         var log = new Vue({
             el: "#Index",
             data: {
-                myArray: [{name:'',start:'',duration:0,day:0,fix:0,des:''}],
+                myArray: [{name:'',start:'',end:'',duration:0,day:0,fix:0,des:''}],
                 
                 word:'Add Tasks',
                 success: 0,
@@ -145,14 +145,31 @@
                 message_success: "Page Loaded successfully",
 
             },
-            computed: {
-                // a computed getter
-                end: function () {
-                    // `this` points to the vm instance
-                    var h=parseInt(this.start.slice(0,2));
-                    var min=parseInt(this.start.slice(3,5));
-                    h=h+(this.duration/60);
-                    min=min+this.duration%60;
+            
+            created: function () {
+                this.load();
+            },
+            methods: {
+                load: function () {
+                    $('#abc').hide();
+                    setTimeout(function () {
+                        log.loaderoff();
+                    }, 500)
+                },func(){
+                    console.log("TESTING")
+                },loaderoff() {
+                    var app = this;
+                    var loading = app.$refs.Loading
+                    loading.style.display = "none"
+                    var content = app.$refs.content2
+                    content.style.display = "block"
+                },add(){
+                    log.myArray.push({name:'',start:'',end:'',duration:0,day:0,fix:0,des:''});
+                },calc(i){
+                    var h=parseInt(log.myArray[i].start.slice(0,2));
+                    var min=parseInt(log.myArray[i].start.slice(3,5));
+                    h=h+(log.myArray[i].duration/60);
+                    min=min+log.myArray[i].duration%60;
                     if(min>60){
                         h=h+1;
                         min=min%60;
@@ -176,26 +193,9 @@
                         $('#mybtn').prop('disabled', false);
                     }
                     console.log(h+":"+min)
-                    return (Math.floor(h)+":"+min);
-                }
-            },
-            created: function () {
-                this.load();
-            },
-            methods: {
-                load: function () {
-                    $('#abc').hide();
-                    setTimeout(function () {
-                        log.loaderoff();
-                    }, 500)
-                }, loaderoff() {
-                    var app = this;
-                    var loading = app.$refs.Loading
-                    loading.style.display = "none"
-                    var content = app.$refs.content2
-                    content.style.display = "block"
-                },add(){
-                    log.myArray.push({name:'',start:'',duration:0,day:0,fix:0,des:''});
+                    log.myArray[i].end=(Math.floor(h)+":"+min);
+                    return "";
+                
                 },submit() {
                     $('#mybtn').prop('disabled', true);
                     for(var i=0;i<log.myArray.length;i++){

@@ -1,0 +1,75 @@
+.bord2{
+    display: table;
+    padding: 10px;
+    width: 95%;
+    margin: 3%;
+}
+.bord{
+    border: 1px solid rgb(7, 47, 99);
+    display: table;
+    padding: 10px;
+    width: 95%;
+    margin: 3%;
+}
+.roww{
+    padding: 15px 10px;
+    border-top: 1px solid black;
+    
+}  
+.headin{
+    font-weight: bold;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2em;
+    background: inherit; 
+    width: 100%;
+    padding: 4px;
+    
+}
+.center{
+    text-align: center;
+}
+
+
+.error{
+    background-image:linear-gradient(10deg, #d50000 0%, #fc362f 74%);
+    border-left: 5px solid #8d0e0e;
+    color: white;
+    padding:7px;
+    font-size: 12px;
+}
+.center{
+    text-align: center;
+}
+.success{
+    background-image:linear-gradient(10deg, #2f8f03 0%, #28e952 74%);
+    border-left: 5px solid #015a01;
+    color: white;
+    padding:7px;
+    font-size: 12px;
+}
+.table1{       
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    font-size: 18px;
+    align-content: center;
+    font-family: HelveticaNeueW01-Thin,HelveticaNeueW02-Thin,HelveticaNeueW10-35Thin,sans-serif;
+    overflow-x: scroll !important;
+    word-wrap: break-word;
+    max-width: 95% !important;
+    overflow: hidden;
+
+}
+.td1, .th1 {
+    max-width: 100px !important;
+    border: 1px solid #dddddd;
+    text-align: left;
+    
+}
+
+@media (min-width:260px) and (max-width:814px){
+    
+    
+    
+}
+
