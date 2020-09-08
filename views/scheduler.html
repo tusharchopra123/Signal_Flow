@@ -45,11 +45,12 @@
                             
                         </tr>
                         <tr v-for="day in 7">
-                            <td v-for="i in 24" class="td1">
+                            <td v-for="i in 24" class="td1" >
                                 
-                                <i v-for="a in 60" style="min-width: 2px;overflow: hidden;">
-                                    <div style="background-color: cornflowerblue;display: inline-block;" v-if="time[(i-1)*60+a]>1">.</div>
-                                    <div style="display:inline ;" v-else>.</div>
+                                <i v-for="a in 60" >
+                                    <span v-bind:style="{ backgroundColor: myArray[time[(i-1)*60+a]].color }"  style="display: inline;" v-if="time[(i-1)*60+a]>1">
+                                        <b v-if="mame[(i-1)*60+a]!=' '">{{mame[(i-1)*60+a]}}</b><b v-else>&nbsp;</b></span>
+                                    <span style="display:inline;font-size: 18px;" v-else><b v-if="a%3==0">&nbsp</b></span>
                                 </i>
 
                             </td>
@@ -68,11 +69,15 @@
             data: {
                 myArray: [],
                 time: [],
+                mame:[],
+                color:['lightblue','yellow','red','green','pink'],
                 message: "",
+                y:0,
                 message_error: "Enter the full details",
                 message_success: "Page Loaded successfully",
                 word: "Go",
             },
+            
             created: function () {
                 this.load();
             },
@@ -83,15 +88,23 @@
                         .then(function (Response1) {
                             for (var i = 0; i < 24 * 60; i++) {
                                 log.time.push(0)
+                                log.mame.push("")
                             }
                             log.myArray = Response1
                             console.log(Response1)
                             for (var i = 0; i < Response1.length; i++) {
                                 log.myArray[i].start = parseInt(log.myArray[i].start.slice(0, 2)) * 60 + parseInt(log.myArray[i].start.slice(3, 5));
+                                log.myArray[i].color=log.color[(i+1)%5]
+                                log.myArray[i].name="  "+log.myArray[i].name+"                                                                                        ";
+                                log.myArray[i].name=log.myArray[i].name+"                                                                                     ";
                                 if (log.myArray[i].fix == 1) {
+                                    var x=0;
                                     for (var j = log.myArray[i].start; j < log.myArray[i].start + parseInt(log.myArray[i].duration); j++) {
                                         log.time[j] = i;
+                                        log.mame[j]= log.myArray[i].name[x];
+                                        x++;
                                     }
+                                    x=0;
                                 }
                             }
                             log.loaderoff()
@@ -128,6 +141,8 @@
                     $('#mybtn').prop('disabled', true);
                     log.word = 'Saving..'
 
+                },fun2(){
+                    return 'cornflowerblue'
                 }
 
             }

@@ -174,12 +174,12 @@ a.article:hover {
     overflow: hidden;
 }
 
-.navbarr a:hover,span:hover,.dropdown2 a:hover :not(#i){
+.navbarr a:hover, span:hover,.dropdown2 a:hover :not(#i){
     background-color: var(--navbar-color);
     color: var(--text); 
 }
 
-#sidebarCollapse,.navbarr a,span{
+#sidebarCollapse,.navbarr a span{
     padding: 12px 16px;
     text-decoration: none;
     text-align: center;
