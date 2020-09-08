@@ -17,9 +17,10 @@ Vue.component('navbar-component', {
                             $(':root').css('--text-hover', '#483519');
             } else if (val == "Theme 3") {
                 //Red
-                $(':root').css('--navbar-color', 'red');
-                $(':root').css('--body', 'white');
-                $(':root').css('--text-hover', 'rgb(245, 150, 127)');
+                            $(':root').css('--navbar-color', '#0F1108');
+                            $(':root').css('--body', '#819595');
+                            $(':root').css('--text','#F7F5FB')
+                            $(':root').css('--text-hover', '#819595');
             } else if (val == "Theme 4") {
                 //Green
                 $(':root').css('--navbar-color', 'darkgreen');
