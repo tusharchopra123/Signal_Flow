@@ -8,7 +8,7 @@
     border: 1px solid rgb(7, 47, 99);
     display: table;
     padding: 10px;
-    width: 95%;
+    max-width: 95%;
     margin: 3%;
 }
 .roww{
@@ -56,12 +56,14 @@
     font-family: HelveticaNeueW01-Thin,HelveticaNeueW02-Thin,HelveticaNeueW10-35Thin,sans-serif;
     overflow-x: scroll !important;
     word-wrap: break-word;
-    max-width: 95% !important;
+    width: 75vw !important;
     overflow: hidden;
+    display: block;
 
 }
 .td1, .th1 {
-    max-width: 100px !important;
+    max-width: 120px !important;
+    min-width: 120px;
     border: 1px solid #dddddd;
     text-align: left;
     
