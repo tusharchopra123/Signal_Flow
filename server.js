@@ -1,5 +1,5 @@
 const express = require('express');
-const SERVER_PORT=process.env.PORT || 3420
+const SERVER_PORT=process.env.PORT || 4490
 const path=require('path')
 const app = express();
 const authroutes = require('./routes/auth-routes').route
@@ -34,7 +34,7 @@ app.use('/dashboard', require('./routes/dashboard'));
 app.use('/navbar2', require('./routes/navbar2'));
 app.use('/images', require('./routes/images'));
 app.use('/settings', require('./routes/settings'));
-app.use('/tasks', require('./routes/tasks'));
+app.use('/signalflow',require('./routes/signalflow'));
 app.listen(SERVER_PORT, function () {
     console.log("Server started on https://...herokuapp.com/");
 });
