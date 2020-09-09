@@ -74,7 +74,7 @@
 
                         </tr>
                         <tr v-for="day in 7">
-                            <td><b>{{days[day-1]}}</b></td>
+                            <td class="td1"><b>{{days[day-1]}}</b></td>
                             <td v-for="i in 24" class="td1">
 
                                 <span v-for="a in 60"
@@ -190,7 +190,7 @@
                     for (var num = 0; num < 8; num++) {
                         if (log.myArray[num].fix == 0) {
                             //console.log(log.myArray[num].name)
-                            var max =0;
+                            var max = 0;
                             var maxst = 0;
                             var hole = 0;
                             var dur = parseInt(log.myArray[num].duration);
@@ -258,6 +258,12 @@
                     loading.style.display = "none"
                     var content = app.$refs.content2
                     content.style.display = "block"
+                }, loaderon() {
+                    var app = this;
+                    var loading = app.$refs.Loading
+                    loading.style.display = "block"
+                    var content = app.$refs.content2
+                    content.style.display = "none"
                 }, getParams(url) {
                     var params = {};
                     var parser = document.createElement('a');
@@ -278,12 +284,18 @@
                 }, submit() {
                     $('#mybtn').prop('disabled', true);
                     $('#abc').show();
+                    setTimeout(function () {
+                        
+                        $('#mybtn').prop('disabled', false);
+                        $('#abc').hide()
+                        return
+                    }, 500)
                     for (var i = 0; i < 24 * 60 * 7; i++) {
                         log.time[i] = -1;
                         log.mame[i] = "";
                     }
                     for (var i = 0; i < log.myArray.length; i++) {
-                      
+
                         if (log.myArray[i].fix == 1) {
                             var x = 0;
                             var st = log.myArray[i].start + 24 * 60 * (parseInt(log.myArray[i].day) - 1);
@@ -308,8 +320,7 @@
                         console.log("WF")
                         log.worstfit();
                     }
-                    $('#mybtn').prop('disabled', false);
-                    $('#abc').hide()
+                    log.select=""
 
 
                 }
