@@ -50,9 +50,9 @@
 }
 .table1{       
     font-family: arial, sans-serif;
-    /* border-collapse: collapse; */
+    border-collapse: collapse;
     font-size: 18px;
-    display: block;
+    display: table;
     align-content: center;
     font-family:HelveticaNeueW01-Thin,HelveticaNeueW02-Thin,HelveticaNeueW10-35Thin,sans-serif;
     overflow-x:scroll  !important;
@@ -69,7 +69,8 @@
     min-width: 100% !important;
     border: 1px solid rgb(146, 145, 145);
     padding:0px !important;
-    text-align: left;    
+    text-align: left;  
+    display: table-cell;  
 }
 
 .td1 div{
