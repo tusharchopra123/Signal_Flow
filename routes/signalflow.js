@@ -34,9 +34,31 @@ route.get('/css', (req, res) => {
 
 })
 route.get('/style2', (req, res) => {
-
   res.sendFile(path.join(__dirname, '../css/style2.css'))
-
+})
+route.get('/signal', (req, res) => {
+  res.sendFile(path.join(__dirname, '../routes/SignalFlowGraph.js'))
+})
+route.get('/gui1', (req, res) => {
+  res.sendFile(path.join(__dirname, '../routes/guiUtilities.js'))
+})
+route.get('/gui2', (req, res) => {
+  res.sendFile(path.join(__dirname, '../routes/gui.js'))
+})
+route.get('/cypto', (req, res) => {
+  res.sendFile(path.join(__dirname, '../routes/cytoscape.min.js'))
+})
+route.get('/popper', (req, res) => {
+  res.sendFile(path.join(__dirname, '../routes/popper.min.js'))
+})
+route.get('/jquery', (req, res) => {
+  res.sendFile(path.join(__dirname, '../routes/jquery.slim.min.js'))
+})
+route.get('/graphlib', (req, res) => {
+  res.sendFile(path.join(__dirname, '../routes/graphlib.min.js'))
+})
+route.get('/bootstrap', (req, res) => {
+  res.sendFile(path.join(__dirname, '../routes/bootstrap.min.js'))
 })
 route.get('/js/jquery',(req,res)=>{
     res.sendFile(path.join(__dirname,'../js/lib/jquery-3.3.1.slim.min.js'));
