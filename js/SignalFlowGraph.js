@@ -1,9 +1,10 @@
 // this file contains the SignalFlowGraph object and its related methods to calculate the overall gain using mason's formula
 
 // we need one object (= 1 Constructor Function) : SignalFlowGraph
-var Graph = require("./graphlib").Graph;
+
 function tryo(){
-    var g = new Graph();
+    var g = new graphlib.Graph();
+    //var Graph = require("./graphlib").Graph;
     //var g = new Graph();
     g.setNode("a","a");
     g.setNode("b","b");
@@ -25,7 +26,7 @@ function tryo(){
     g.setEdge("d", "c",{ k: -1 });
     g.setEdge("g", "g",{ k: -1 });
 
-
+    console.log(g);
     // how to get the final result
     var stack = [];
     var forwordPaths = getForwordPaths(g,stack,"a");

@@ -44,7 +44,7 @@ route.get('/js/jquery',(req,res)=>{
 route.get('/js/popper',(req,res)=>{
     res.sendFile(path.join(__dirname,'../js/lib/popper.min.js'));
 })
-route.get('/js/lib/graphlib',(req,res)=>{
+route.get('/js/lib/graphlib', (req,res)=>{
     res.sendFile(path.join(__dirname,'../js/lib/graphlib.js'));
 })
 route.get('/js/bootstrap',(req,res)=>{

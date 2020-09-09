@@ -1,7 +1,5 @@
 var nodesIdsCount = 0;
 var edgesIdsCount = 0;
-import cytoscape, { stylesheet } from 'cytoscape';
-
 // 0 -> should select "from" node
 // 1 -> should select "to" node
 var addBranchState = 0;
@@ -213,8 +211,8 @@ var editEdgeLabelHandler = function (evt) {
     }
 };
 
-startPressed = false;
-endPressed = false;
+var startPressed = false;
+var endPressed = false;
 
 
 function setStartPressed(pressed) {
@@ -344,8 +342,8 @@ function addNode() {
 }
 
 
-removePressed = false;
-editLabelPressed = false;
+var removePressed = false;
+var editLabelPressed = false;
 
 var removeNodeHandler = function (evt) {
     if (removePressed) {
