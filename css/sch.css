@@ -60,6 +60,10 @@
     max-width: 75vw !important;
     scroll-behavior: smooth;
 }
+.ab{
+    display:inline;
+    font-size: 18px;
+}
 .td1, .th1 {
     line-height: 50px;
     min-width: 100% !important;
