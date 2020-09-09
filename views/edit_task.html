@@ -35,7 +35,7 @@
             <img src="../images/loading" id="Loading" ref="Loading">
             <div id="content2" ref="content2" class="center">
                 <div class="bord">
-                    <div class="headin center">Edit Holiday</div>
+                    <div class="headin center">Edit Task</div>
                     <div class="roww"></div>
                     <div class="form-group">
                         <table class="report2">
@@ -144,7 +144,7 @@
                     // `this` points to the vm instance
                     var h=parseInt(this.start.slice(0,2));
                     var min=parseInt(this.start.slice(3,5));
-                    h=h+(this.duration/60);
+                    h=h+Math.floor((this.duration/60));
                     min=min+this.duration%60;
                     if(min>60){
                         h=h+1;
@@ -169,7 +169,7 @@
                         $('#mybtn').prop('disabled', false);
                     }
                     console.log(h+":"+min)
-                    return (Math.floor(h)+":"+min);
+                    return (h+":"+min);
                 }
             },
             created: function () {
@@ -182,12 +182,17 @@
                     axios.get('http://localhost:3420/tasks/api/tasks?id='+params.id)
                         .then(function (Response1) {
                             log.idx=params.id
+                            console.log(Response1)
                             log.name=Response1.name,
                             log.duration=Response1.duration,
                             log.des=Response1.text,
                             log.start=Response1.start,
                             log.fix=Response1.fix,
                             log.day=Response1.day
+                            if(Response1.fix==2){
+                                log.fix=0
+                            }
+                            
                             log.loaderoff() 
                         })
                         .catch((err) => {
