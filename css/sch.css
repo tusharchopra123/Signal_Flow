@@ -50,26 +50,37 @@
     font-family: arial, sans-serif;
     border-collapse: collapse;
     font-size: 18px;
-    display: block;
+    display: table;
     align-content: center;
     font-family:HelveticaNeueW01-Thin,HelveticaNeueW02-Thin,HelveticaNeueW10-35Thin,sans-serif;
     overflow-x:scroll  !important;
-    word-wrap: break-word;
     max-width: 75vw !important;
     scroll-behavior: smooth;
+}
+.sp{
+    width: 75vw;
+    overflow-x: scroll;
 }
 .ab{
     display:inline;
     font-size: 18px;
 }
 .td1, .th1 {
+    display: table-cell;
     line-height: 50px;
     min-width: 100% !important;
+    max-width: 160px;
+    overflow: hidden;
     border: 1px solid rgb(146, 145, 145);
     padding:0px !important;
     text-align: center;  
 }
-
+.ab1:hover{
+    cursor: pointer;
+}
+.td2{
+    text-align: center;
+}
 .td1 div{
     padding:0px !important;
 }

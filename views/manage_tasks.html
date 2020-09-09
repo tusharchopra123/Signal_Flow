@@ -72,7 +72,7 @@
                             <td>{{myArray[i-1].start}}</td>
                             <td>{{myArray[i-1].duration}} mins</td>
                             <td v-if="myArray[i-1].fix==1">Yes</td>
-                            <td v-if="myArray[i-1].fix==0">No</td>
+                            <td v-if="myArray[i-1].fix!=1">No</td>
                             <td><button @click="edit(myArray[i-1].id)" class="btn btn-success"><i
                                         class="fa fa-pencil-square" style="color:white" aria-hidden="true"></i>&nbsp
                                     Edit <div class="media">Task

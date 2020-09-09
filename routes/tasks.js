@@ -44,11 +44,11 @@ route.get('/css', (req, res) => {
   res.sendFile(path.join(__dirname, '../css/task.css'))
 })
 function cr(arr) {
-  if(arr.fix=='true'){
-    arr.fix=1;
+  if (arr.fix == 'true') {
+    arr.fix = 1;
   }
-  if(arr.des==""){
-    arr.des="No Comments !"
+  if (arr.des == "") {
+    arr.des = "No Comments !"
   }
   return Task.create({
     U_ID: xid,
@@ -61,6 +61,50 @@ function cr(arr) {
     end: arr.end,
 
   }).then((hol) => {
+    console.log("Task Added Successfully !")
+    return true
+
+  }).catch((err) => {
+    console.log(err)
+    false
+  })
+}
+function start(num) {
+  var h = Math.floor(num / 60);
+  var min = num % 60;
+  if (h == 0) {
+    h = '00'
+  } else {
+    if (h > 0 && h <= 9) {
+      h = '0' + h
+    }
+  }
+  if (min == 0) {
+    min = '00'
+  } else {
+    if (min > 0 && min <= 9) {
+      min = '0' + min
+    }
+  }
+
+
+  return h + ":" + min
+}
+function cr2(arr) {
+  if (arr.fix == 1) {
+    arr.fix = 1;
+  } else {
+    arr.fix = 2;
+    arr.day = arr.day;
+  }
+  arr.start = start(arr.start)
+
+  return Task.update({
+    start: arr.start,
+    day: arr.day,
+    fix: arr.fix,
+
+  }, { where: { id: arr.id } }).then((hol) => {
     console.log("Task Added Successfully !")
     return true
 
@@ -92,15 +136,31 @@ route.post('/add_task', authCheck, (req, res) => {
     })
   })
 })
-route.post('/add_task2', authCheck,async (req, res) => {
+route.post('/add_task2', authCheck, async (req, res) => {
   console.log("Hey IN Add Mul")
   for (var i = 0; i < req.body.arr.length; i++) {
     var a = await cr(req.body.arr[i])
     if (a == true) {
 
-    }else{
+    } else {
       return res.send({
-        message: "Error in Task "+(i+1)+" ! "
+        message: "Error in Task " + (i + 1) + " ! "
+      })
+    }
+  }
+  return res.send({
+    message: "true"
+  })
+})
+route.post('/add_task3', authCheck, async (req, res) => {
+  console.log("Hey IN Add Mul Save")
+  for (var i = 0; i < req.body.arr.length; i++) {
+    var a = await cr2(req.body.arr[i])
+    if (a == true) {
+
+    } else {
+      return res.send({
+        message: "Error in Task " + (i + 1) + " ! "
       })
     }
   }
@@ -133,6 +193,19 @@ route.get('/api/tasks', authCheck, (req, res) => {
         })
       })
   }
+})
+route.get('/api/dash', authCheck, (req, res) => {
+  Task.findAll({ where: { day: req.query.day }})
+    .then((emps) => {
+      res.status(200).send(emps)
+    })
+    .catch((err) => {
+      console.log(err)
+      return res.send({
+        message: "Could not retrive tasks"
+      })
+    })
+
 
 
 })
