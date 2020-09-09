@@ -1,5 +1,4 @@
 const route = require('express').Router()
-
 const Sequelize = require('sequelize')
 const path = require('path')
 function isEmpty(obj) {
@@ -9,7 +8,6 @@ function isEmpty(obj) {
   }
   return true;
 }
-
 const authCheck = (req, res, next) => {
   if (isEmpty(req.user)) {
     //user is not logged in
@@ -62,9 +60,23 @@ route.get('/graphlib', (req, res) => {
 route.get('/bootstrap', (req, res) => {
   res.sendFile(path.join(__dirname, '../routes/bootstrap.min.js'))
 })
-route.get('/api/dash', authCheck, (req, res) => {
-  res.status(200).send([10,2,9,1]);
+route.get('/js/jquery',(req,res)=>{
+    res.sendFile(path.join(__dirname,'../js/lib/jquery-3.3.1.slim.min.js'));
+})
+route.get('/js/popper',(req,res)=>{
+    res.sendFile(path.join(__dirname,'../js/lib/popper.min.js'));
+})
+route.get('/js/lib/graphlib',(req,res)=>{
+    res.sendFile(path.join(__dirname,'../js/lib/graphlib.js'));
+})
+route.get('/js/bootstrap',(req,res)=>{
+    res.sendFile(path.join(__dirname,'../js/lib/bootstrap.min.js'));
 })
 
-
+route.get('/js/guiUtilities',(req,res)=>{
+    res.sendFile(path.join(__dirname,'../js/guiUtilities.js'));
+})
+route.get('/js/gui',(req,res)=>{
+    res.sendFile(path.join(__dirname,'../js/gui.js'));
+})
 module.exports = route

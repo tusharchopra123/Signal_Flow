@@ -39,8 +39,6 @@ app.listen(SERVER_PORT, function () {
     console.log("Server started on https://...herokuapp.com/");
 });
 
-
-
 //set up routes
 app.use('/auth',authroutes)
 app.use('/profile',profileroutes)
