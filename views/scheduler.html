@@ -183,7 +183,6 @@
                         if (log.myArray[num].fix != 1) {
                             //console.log(log.myArray[num].name)
                             for (var i = 0; i < 60 * 24 * 7; i++) {
-
                                 if (log.time[i] == -1 && log.time[i + parseInt(log.myArray[num].duration)] == -1 && log.time[i + parseInt(log.myArray[num].duration / 2)] == -1) {
                                     //console.log(i);
                                     log.assign(i, num);
@@ -192,6 +191,7 @@
                             }
                         }
                     }
+                    return true;
 
 
 
@@ -225,7 +225,7 @@
                             log.assign(maxst, num)
                         }
                     }
-
+                    return 1;
                 }, bestfit() {
                     for (var num = 0; num <= log.myArray.length; num++) {
                         if (log.myArray[num].fix != 1) {
@@ -317,7 +317,7 @@
                 
                 }, fun2() {
                     return 'cornflowerblue'
-                }, submit() {
+                }, async submit() {
                     $('#mybtn').prop('disabled', true);
                     $('#abc').show();
                     setTimeout(function () {
@@ -331,7 +331,6 @@
                     }
                     log.time[24*60*7]=1;
                     for (var i = 0; i < log.myArray.length; i++) {
-
                         if (log.myArray[i].fix == 1) {
                             var x = 0;
                             var st = log.myArray[i].start + 24 * 60 * (parseInt(log.myArray[i].day) - 1);
@@ -342,19 +341,19 @@
                                 x++;
                             }
                             x = 0;
-                        }
+                        } 
                     }
                     if (log.select == 'First Fit') {
                         console.log("FF")
-                        log.firstfit();
+                        var k = await log.firstfit();
                     }
                     if (log.select == 'Best Fit') {
                         console.log("BF")
-                        log.bestfit();
+                        var k = await log.bestfit();
                     }
                     if (log.select == 'Worst Fit') {
                         console.log("WF")
-                        log.worstfit();
+                        var k = await log.worstfit();
                     }
                     log.select=""
 
