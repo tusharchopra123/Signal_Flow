@@ -1,10 +1,9 @@
 // this file contains the SignalFlowGraph object and its related methods to calculate the overall gain using mason's formula
 
 // we need one object (= 1 Constructor Function) : SignalFlowGraph
-
+var Graph = require("./graphlib").Graph;
 function tryo(){
-    var g = new graphlib.Graph();
-    //var Graph = require("./graphlib").Graph;
+    var g = new Graph();
     //var g = new Graph();
     g.setNode("a","a");
     g.setNode("b","b");

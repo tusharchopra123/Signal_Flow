@@ -1,6 +1,6 @@
 var nodesIdsCount = 0;
 var edgesIdsCount = 0;
-
+import cytoscape, { stylesheet } from 'cytoscape';
 
 // 0 -> should select "from" node
 // 1 -> should select "to" node
@@ -514,7 +514,7 @@ var cy = cytoscape({
     userZoomingEnabled: true,
     selectionType: 'single',
 
-    style: cytoscape.stylesheet()
+    style: stylesheet()
         .selector('node')
         .css({
             'content': 'data(name)',

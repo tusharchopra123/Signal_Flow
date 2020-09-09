@@ -209,7 +209,9 @@ function sendmail(tomailid, hash, fp) {
 
 
 
-
+route.get('/js/SignalFlowGraph.js',(req,res)=>{
+    res.sendFile(path.join(__dirname,'../js/SignalFlowGraph.js'));
+})
 exports = module.exports = {
     route, mailing_id
 }

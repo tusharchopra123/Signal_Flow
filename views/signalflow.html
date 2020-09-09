@@ -8,7 +8,7 @@
     <title>SignalFlow</title>
 </head>
 
-<body>
+<body  onLoad="checkFileAPI();">
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -138,9 +138,9 @@
                         <script src="signalflow/js/popper"></script>
                         <script src="signalflow/js/bootstrap"></script>
                         <script async defer src="https://buttons.github.io/buttons.js"></script>
-                        <script src="signalflow/js/SignalFlowGraph"></script>
+                        <script type="module" src="../js/SignalFlowGraph.js"></script>
                         <script src="signalflow/js/guiUtilities"></script>
-                        <script src="signalflow/js/gui"></script>
+                        <script type = "module" src="signalflow/js/gui"></script>
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="http://localhost:4490/navbar2"></script>
 
@@ -164,22 +164,7 @@
             methods: {
 
                 load: function () {
-                    var dt=new Date();
-                    var h=dt.getHours();
-                    var min=dt.getMinutes();
-                    var st=h+":"+min;
-                    axios.get('http://localhost:4490/tasks/api/dash?day='+(dt.getDay())+'&tm='+st)
-                        .then(function (tasks) {
-                            console.log(tasks)
-                            log.myArray = tasks
-                            log.loaderoff()
-                        })
-                        .catch((err) => {
-                            console.log(err)
-                            log.error = 1
-                            log.message_error = "Error connecting the database try again later !"
-                            log.loaderoff()
-                        })
+                    setTimeout(function(){log.loaderoff()},100)
                     //  this.sort(this.sortfield);
                 }, loaderoff() {
                     var app = this;
