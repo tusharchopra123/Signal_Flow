@@ -195,7 +195,11 @@ route.get('/api/tasks', authCheck, (req, res) => {
   }
 })
 route.get('/api/dash', authCheck, (req, res) => {
-  Task.findAll({ where: { day: req.query.day }})
+  Task.findAll({
+    where: { day: req.query.day }, order: [
+      ['start', 'ASC'],
+    ],
+  })
     .then((emps) => {
       res.status(200).send(emps)
     })

@@ -44,7 +44,7 @@
                     <div v-if="success" class="success">
                         {{message_success}} !
                     </div> <br>
-                    UP COMING TASKS<br>
+                    TODAY'S TASKS<br>
                 <div class="cardtask" @click="edit(i.emp_id)" v-for="i in myArray">
                     <b class="name">{{i.name}}</b>
 
@@ -105,7 +105,7 @@
                     var h=dt.getHours();
                     var min=dt.getMinutes();
                     var st=h+":"+min;
-                    axios.get('http://localhost:3420/tasks/api/dash?day='+(1)+'&tm='+st)
+                    axios.get('http://localhost:3420/tasks/api/dash?day='+(dt.getDay())+'&tm='+st)
                         .then(function (tasks) {
                             console.log(tasks)
                             log.myArray = tasks
