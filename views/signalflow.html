@@ -8,21 +8,21 @@
     <title>SignalFlow</title>
 </head>
 
-<body  onLoad="checkFileAPI();">
+<body>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
     <link rel="stylesheet" href="http://localhost:4490/signalflow/css">
     <link rel="stylesheet" href="http://localhost:4490/signalflow/style2">
-    <script src="http://localhost:4490/signalflow/graphlib"></script>
-    <script src="http://localhost:4490/signalflow/cypto"></script>
-    <title>SignalFlow</title>
-</head>
 
-<body onLoad="checkFileAPI();">
-    
-
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios@0.2.1/dist/axios.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+
+
     <!-- Font Awesome JS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -37,213 +37,16 @@
             <div id="content2" ref="content2">
                 <div class="bord">
                     <div class="headin center">Signal Flow Graph</div>
-                    <div class="container">
-
-                        <!-- about -->
-                        <div class="jumbotron">
-                
-                            <h1 class="display-4">SFG Solver
-                                <a class="github-button" href="https://github.com/MahmoudTarek97/Signal-Flow-Graph-Solver" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a></h1>
-                            <hr class="my-4">
-                            
-                            <a class="btn btn-primary" href="https://en.wikipedia.org/wiki/Signal-flow_graph" role="button">Learn more</a>
-                            <a href="" id="sfg" download="sfg.jpg"></a>
-                        </div>
-                
-                
-                        <div class="jumbotron">
-                
-                            <!-- Tab panes -->
-                            <div class="tab-pane active container" id="dragdrop"><br>
-                
-                
-                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                                        <input type="file" class="btn button btn-outline-primary" onchange='readText(this)' />
-                                        <button type="button" class="btn button btn-outline-primary" onclick="saveAsJSON('graph.json')">Save as JSON</button>
-                
-                                    </div>
-                                    <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                        <button type="button" class="btn button button btn-outline-primary" onclick="resizeGraph()">Fit</button>
-                                        <button type="button" class="btn button button btn-outline-primary" onclick="snapShot()"></button>
-                                    </div>
-                
-                
-                                </div>
-                
-                
-                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                    <div class="btn-group mr-2" role="group" aria-label="Third group">
-                                        <button type="button" class="btn button btn-outline-primary" onclick="addNode()">Add Node</button>
-                                        <button type="button" class="btn button btn-outline-primary" id="addBranch" onclick="addBranch()">Add Branch</button>
-                                        <button type="button" class="btn button btn-outline-primary" id="editLabel" onclick="editLabel()">Edit Label</button>
-                                        <button type="button" class="btn button btn-outline-primary" id="remove" onclick="activateRemove()">Remove</button>
-                                        <button type="button" class="btn btn-outline-danger" onclick="clearAll()">Clear All</button>
-                                    </div>
-                
-                                    <div class="btn-group" role="group" aria-label="Fourth group">
-                                        <button type="button" class="btn button btn-outline-primary" id="start" onclick="setStart()">Set Source</button>
-                                        <button type="button" class="btn button btn-outline-primary" id="end" onclick="setEnd()">Set End</button>
-                                        <button type="button" class="btn btn-outline-success" onclick="solve()">Solve</button>
-                                    </div>
-                
-                                </div>
-                
-                                <div id="cy">
-                
-                                </div>
-                            </div>
-                        </div>
-                
-                
-                
-                        <!-- output -->
-                        <div class="jumbotron">
-                            <h3>Output</h3>
-                            <p id="result">overall gain = ? </p>
-                
-                            <details open>
-                                <summary>Forward Paths</summary>
-                                <p id="forwardPaths"></p>
-                            </details>
-                            <details open>
-                                <summary>Individual Loops</summary>
-                                <p id="cycles"></p>
-                            </details>
-                            <details open>
-                                <summary>Non Touching Loops</summary>
-                                <p id="nonTouchingLoops"></p>
-                            </details>
-                            <details open>
-                                <summary>Deltas</summary>
-                                <p id="deltas"></p>
-                            </details>
-                        </div>
-                
-                
-                
-                
-                
-                        <hr>
-                        <footer>
-                            <p>&copy; All Credits goes to Mahmoud Tarek &amp; Mostafa Labib</p>
-                        </footer>
-                
-                
-                
-                    </div>
                     <div class="roww"></div>
-                    <body onLoad="checkFileAPI();">
-                        <div class="container">
-                    
-                            <!-- about -->
-                            <div class="jumbotron">
-                                <p>A signal-flow graph (SFG), often called a Mason graph, is a specialized flow graph, a directed graph in which nodes represent system variables, and branches (edges, arcs, or arrows) represent functional connections between pairs of nodes. SFG's are most commonly used to represent signal flow in a physical system and its controller(s), forming a cyber-physical system.</p>
-                            </div>
-                    
-                    
-                            <div class="jumbotron">
-                    
-                                <!-- Tab panes -->
-                                <div class="tab-pane active container" id="dragdrop"><br>
-                    
-                    
-                                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                        <div class="btn-group mr-2" role="group" aria-label="First group">
-                                            <input type="file" class="btn button btn-outline-primary" onchange='readText(this)' />
-                                            <button type="button" class="btn button btn-outline-primary" onclick="saveAsJSON('graph.json')">Save as JSON</button>
-                    
-                                        </div>
-                                        <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                            <button type="button" class="btn button button btn-outline-primary" onclick="resizeGraph()">Fit</button>
-                                            <button type="button" class="btn button button btn-outline-primary" onclick="snapShot()"><img src="assets/SnapshotIcon.png" width="20" /></button>
-                                        </div>
-                    
-                    
-                                    </div>
-                    
-                    
-                                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                        <div class="btn-group mr-2" role="group" aria-label="Third group">
-                                            <button type="button" class="btn button btn-outline-primary" onclick="addNode()">Add Node</button>
-                                            <button type="button" class="btn button btn-outline-primary" id="addBranch" onclick="addBranch()">Add Branch</button>
-                                            <button type="button" class="btn button btn-outline-primary" id="editLabel" onclick="editLabel()">Edit Label</button>
-                                            <button type="button" class="btn button btn-outline-primary" id="remove" onclick="activateRemove()">Remove</button>
-                                            <button type="button" class="btn btn-outline-danger" onclick="clearAll()">Clear All</button>
-                                        </div>
-                    
-                                        <div class="btn-group" role="group" aria-label="Fourth group">
-                                            <button type="button" class="btn button btn-outline-primary" id="start" onclick="setStart()">Set Source</button>
-                                            <button type="button" class="btn button btn-outline-primary" id="end" onclick="setEnd()">Set End</button>
-                                            <button type="button" class="btn btn-outline-success" onclick="solve()">Solve</button>
-                                        </div>
-                    
-                                    </div>
-                    
-                                    <div id="cy">
-                    
-                                    </div>
-                                </div>
-                            </div>
-                    
-                    
-                    
-                            <!-- output -->
-                            <div class="jumbotron">
-                                <h3>Output</h3>
-                                <p id="result">overall gain = ? </p>
-                    
-                                <details open>
-                                    <summary>Forward Paths</summary>
-                                    <p id="forwardPaths"></p>
-                                </details>
-                                <details open>
-                                    <summary>Individual Loops</summary>
-                                    <p id="cycles"></p>
-                                </details>
-                                <details open>
-                                    <summary>Non Touching Loops</summary>
-                                    <p id="nonTouchingLoops"></p>
-                                </details>
-                                <details open>
-                                    <summary>Deltas</summary>
-                                    <p id="deltas"></p>
-                                </details>
-                            </div>
-                    
-                    
-                    
-                    
-                    
-                            <hr>
-                            <footer>
-                                <p>&copy; All Credits goes to Mahmoud Tarek &amp; Mostafa Labib</p>
-                            </footer>
-                    
-                    
-                    
-                        </div>     
-                    
+                    <div class="sfgtext"> 
+                    <p>A signal-flow graph (SFG), often called a Mason graph, is a specialized flow graph, a directed graph in which nodes represent system variables, and branches (edges, arcs, or arrows) represent functional connections between pairs of nodes. SFG's are most commonly used to represent signal flow in a physical system and its controller(s), forming a cyber-physical system.</p>
+                    </div>
+                    <iframe class="signal"src="https://tusharchopra123.github.io/SignalFlowHelper/" frameborder="0"></iframe>
         </div>
     </div>
     </div>
 
     </div>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/cjs/popper.min.js"></script>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.15.2/cytoscape.min.js"></script>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/graphlib/2.1.8/graphlib.min.js"></script>
-
-    <!-- Bootstrap CSS CDN -->
-    
-    <!-- Our Custom CSS -->
-    <script src="http://localhost:4490/signalflow/popper"></script>
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script src="http://localhost:4490/signalflow/jquery"></script>
-    <script src="http://localhost:4490/signalflow/bootstrap"></script>
-    <script src="http://localhost:4490/signalflow/signal"></script>
-    <script src="http://localhost:4490/signalflow/gui1"></script>
-    <script src="http://localhost:4490/signalflow/gui2"></script>
-
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="http://localhost:4490/navbar2"></script>
 
@@ -253,8 +56,7 @@
             el: "#Index",
             data: {
                 myArray: [],
-                Days: ['Any', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-                sortfield: 'Name',
+               
                 message_error: "Dont leave empty response",
                 error: 0,
                 success:0,
@@ -266,26 +68,8 @@
             },
             methods: {
 
-                load: function () {
-                    var dt=new Date();
-                    var h=dt.getHours();
-                    var min=dt.getMinutes();
-                    var st=h+":"+min;
-                    setTimeout(function(){
-                        log.loaderoff()
-                    },500)
-                    /*axios.get('http://localhost:4490/tasks/api/dash?day='+(dt.getDay())+'&tm='+st)
-                        .then(function (tasks) {
-                            console.log(tasks)
-                            log.myArray = tasks
-                            log.loaderoff()
-                        })
-                        .catch((err) => {
-                            console.log(err)
-                            log.error = 1
-                            log.message_error = "Error connecting the database try again later !"
-                            
-                        })*/
+                load: function () {                   
+                                setTimeout(()=>{log.loaderoff()},100)
                     //  this.sort(this.sortfield);
                 }, loaderoff() {
                     var app = this;

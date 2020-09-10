@@ -206,15 +206,6 @@ function sendmail(tomailid, hash, fp) {
         }
     });
 }
-
-
-
-route.get('/js/SignalFlowGraph.js',(req,res)=>{
-    res.sendFile(path.join(__dirname,'../js/SignalFlowGraph.js'));
-})
-route.get('/js/lib/graphlib',(req,res)=>{
-    res.sendFile(path.join(__dirname,'../js/lib/graphlib.js'));
-})
 exports = module.exports = {
     route, mailing_id
 }

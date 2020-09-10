@@ -35,6 +35,7 @@ app.use('/navbar2', require('./routes/navbar2'));
 app.use('/images', require('./routes/images'));
 app.use('/settings', require('./routes/settings'));
 app.use('/signalflow',require('./routes/signalflow'));
+
 app.listen(SERVER_PORT, function () {
     console.log("Server started on https://...herokuapp.com/");
 });
