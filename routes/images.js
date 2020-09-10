@@ -21,6 +21,9 @@ route.get('/logo', (req, res) => {
 route.get('/lock', (req, res) => {
   res.sendFile(path.join(__dirname, '../Images/lock.png'))
 })
+route.get('/signal', (req, res) => {
+  res.sendFile(path.join(__dirname, '../Images/signal.jpg'))
+})
 route.get('/left', (req, res) => {
   res.sendFile(path.join(__dirname, '../Images/left.png'))
 })

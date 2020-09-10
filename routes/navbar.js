@@ -81,8 +81,21 @@ Vue.component('navbar-component', {
         <li>
             <a href="http://localhost:4490/dashboard"><i class="fa fa-tachometer" style="color:blue" aria-hidden="true"></i>&nbsp Dashboard</a>
         </li>
-        <li>
-        <a href="http://localhost:4490/signalflow"><i class="fa fa-tachometer" style="color:blue;" aria-hidden="true"></i>&nbsp Signal Graph</a>
+        
+        <li >
+            <a href="#signal" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="fa fa-gg-circle" style="color:yellow" aria-hidden="true"></i>&nbsp SFG Solver</a>
+            <ul class="collapse list-unstyled" id="signal" data-parent="#sidebar">
+                <li>
+                    <a href="http://localhost:4490/signalflow/numeric"><i class="fa fa-ellipsis-h" style="color:yellow"aria-hidden="true"></i>&nbsp Numeric Solver</a>
+                </li>
+                <li>
+                    <a href="http://localhost:4490/signalflow"><i class="fa fa-ellipsis-h" style="color:yellow"aria-hidden="true"></i>&nbsp Variable Solver</a>
+                </li>
+                <li>
+                    <a href="http://localhost:4490/example"><i class="fa fa-ellipsis-h" style="color:yellow"aria-hidden="true"></i>&nbsp Signal Flow Example</a>
+                </li>
+            </ul>
         </li>
         <li >
             <a href="#concept" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">

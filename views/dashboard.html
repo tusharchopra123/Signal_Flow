@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="http://localhost:4490/dashboard/css">
     <link rel="stylesheet" href="http://localhost:4490/dashboard/style2">
+
+    <link rel="stylesheet" href="http://localhost:4490/dashboard/css">
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios@0.2.1/dist/axios.min.js"></script>
@@ -37,11 +38,57 @@
             <div id="content2" ref="content2">
                 <div class="bord">
                     <div class="headin center">Dashboard</div>
+
                     <div class="roww"></div>
-                    
+                    <p style="color:black"><b><b>Signal flow graph of control system</b></b> is further simplification
+                        of block diagram of control system. Here, the blocks of transfer function, summing symbols and
+                        take off points are eliminated by branches and nodes.<br>
+
+                        The transfer function is referred as transmittance in signal flow graph. Let us take an example
+                        of equation y = Kx. This equation can be represented with block diagram as below<br>
+                    </p>
+                    <div class="center"><img
+                            src="https://www.electrical4u.com/electrical/wp-content/uploads/2015/02/signal-flow-diagram.gif">
+                    </div><br>
+                    <p style="color:black">
+                        The same equation can be represented by signal flow graph, where x is input variable node, y is
+                        output variable node and a is the transmittance of the branch connecting directly these two
+                        nodes.</p>
+                    <div class="center"><img
+                            src="https://www.electrical4u.com/electrical/wp-content/uploads/2015/02/simple-signal-flow-graph1.gif">
+                    </div><br>
+
+                    <h3>Rules for Drawing Signal Flow Graph</h3>
+                    <p style="color:black;margin-left: 3%;">
+                        1. The signal always travels along the branch towards the direction of indicated arrow in the
+                        branch.<br>
+                        2. The output signal of the branch is the product of transmittance and input signal of that
+                        branch.<br>
+                        3. Input signal at a node is summation of all the signals entering at that node.<br>
+                        4. Signals propagate through all the branches, leaving a node.<br></p>
+
+                        <h3>Mason Gain's Formula</h3>    
+                    <p style="color:black">
+                        Let us now discuss the Mason’s Gain Formula. Suppose there are ‘N’ forward paths in a signal flow graph. The gain between the input and the output nodes of a signal flow graph is nothing but the transfer function of the system. It can be calculated by using Mason’s gain formula.<br>
+                        <br>
+                        <b></b>Mason gain’s formula is composed of three types of terms:</b><br>
+
+                        <p style="margin-left: 3%;color:black">1. We identify all forward paths and designate the path gains as Pk for k=1,2,3,…<br>
+                        2. We form a parameter ∆ which denotes the interactions among the various loops.<br>
+                        <b style="margin-left: 3%;"> ∆=1- {sum of all single loops gains} + {sum of products of gains of all possible combinations of
+                        two non-touching loops}- {sum of products of gains of all possible combinations of three
+                        non-touching loops}+….<br><br></b>
+
+                        3. We form a parameter ∆k (for k=1,2,3,…) Which is a cofactor of kth forward path, obtained from ∆
+                        by removing the loops that touch this path.<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;So,mason’s gain formula for the overall gain is<br></p>
+                        <div class="center"><img
+                            src="http://localhost:4490/Images/signal">
+                    </div><br>
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
 
     </div>
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
@@ -57,7 +104,7 @@
                 sortfield: 'Name',
                 message_error: "Dont leave empty response",
                 error: 0,
-                success:0,
+                success: 0,
                 message_error: "Some Error",
 
             },
@@ -67,22 +114,13 @@
             methods: {
 
                 load: function () {
-                    var dt=new Date();
-                    var h=dt.getHours();
-                    var min=dt.getMinutes();
-                    var st=h+":"+min;
-                    axios.get('http://localhost:4490/tasks/api/dash?day='+(dt.getDay())+'&tm='+st)
-                        .then(function (tasks) {
-                            console.log(tasks)
-                            log.myArray = tasks
-                            log.loaderoff()
-                        })
-                        .catch((err) => {
-                            console.log(err)
-                            log.error = 1
-                            log.message_error = "Error connecting the database try again later !"
-                            log.loaderoff()
-                        })
+                    var dt = new Date();
+                    var h = dt.getHours();
+                    var min = dt.getMinutes();
+                    var st = h + ":" + min;
+                    setTimeout(function () {
+                        log.loaderoff()
+                    }, 500)
                     //  this.sort(this.sortfield);
                 }, loaderoff() {
                     var app = this;
@@ -96,7 +134,7 @@
         })
 
     </script>
-    
+
 
     <script src="http://localhost:4490/navbar2/collapsing"></script>
 </body>

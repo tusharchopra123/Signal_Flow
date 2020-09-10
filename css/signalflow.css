@@ -110,7 +110,9 @@ body {
     background-color: dodgerblue;
     color: white;
 }
-
+.p1{
+    color:black !important;
+}
 
 @media (min-width:260px) and (max-width:814px){
     .sbox{

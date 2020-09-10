@@ -257,8 +257,6 @@ a.article:hover {
 .signal{
     min-height: 150vh;
     min-width: 100%;
-    padding:auto;
-    margin:auto;
     background:inherit;
 }
 .sfgtext p{

@@ -28,6 +28,9 @@ route.get('/api', authCheck, (req, res) => {
 route.get('/', authCheck, (req, res) => {
   res.sendFile(path.join(__dirname, '../views/signalflow.html'))
 })
+route.get('/numeric', authCheck, (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/signalflow2.html'))
+})
 route.get('/css', (req, res) => {
 
   res.sendFile(path.join(__dirname, '../css/signalflow.css'))
