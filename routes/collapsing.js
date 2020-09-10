@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    axios.get('http://localhost:4490/dashboard/logo')
+    axios.get('https://sfg-solver.herokuapp.com/dashboard/logo')
         .then(function (Response1) {
             console.log(Response1)
             $('.logoi'). attr("src", Response1);

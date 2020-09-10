@@ -79,7 +79,7 @@ Vue.component('navbar-component', {
     <ul class="list-unstyled components" style="padding:0">
         <p>Welcome</p>
         <li>
-            <a href="http://localhost:4490/dashboard"><i class="fa fa-tachometer" style="color:blue" aria-hidden="true"></i>&nbsp Dashboard</a>
+            <a href="https://sfg-solver.herokuapp.com/dashboard"><i class="fa fa-tachometer" style="color:blue" aria-hidden="true"></i>&nbsp Dashboard</a>
         </li>
         
         <li >
@@ -87,13 +87,13 @@ Vue.component('navbar-component', {
             <i class="fa fa-gg-circle" style="color:yellow" aria-hidden="true"></i>&nbsp SFG Solver</a>
             <ul class="collapse list-unstyled" id="signal" data-parent="#sidebar">
                 <li>
-                    <a href="http://localhost:4490/signalflow/numeric"><i class="fa fa-ellipsis-h" style="color:yellow"aria-hidden="true"></i>&nbsp Numeric Solver</a>
+                    <a href="https://sfg-solver.herokuapp.com/signalflow/numeric"><i class="fa fa-ellipsis-h" style="color:yellow"aria-hidden="true"></i>&nbsp Numeric Solver</a>
                 </li>
                 <li>
-                    <a href="http://localhost:4490/signalflow"><i class="fa fa-ellipsis-h" style="color:yellow"aria-hidden="true"></i>&nbsp Variable Solver</a>
+                    <a href="https://sfg-solver.herokuapp.com/signalflow"><i class="fa fa-ellipsis-h" style="color:yellow"aria-hidden="true"></i>&nbsp Variable Solver</a>
                 </li>
                 <li>
-                    <a href="http://localhost:4490/example"><i class="fa fa-ellipsis-h" style="color:yellow"aria-hidden="true"></i>&nbsp Signal Flow Example</a>
+                    <a href="https://sfg-solver.herokuapp.com/example"><i class="fa fa-ellipsis-h" style="color:yellow"aria-hidden="true"></i>&nbsp Signal Flow Example</a>
                 </li>
             </ul>
         </li>
@@ -102,7 +102,7 @@ Vue.component('navbar-component', {
             <i class="fa fa-fort-awesome" style="color:purple" aria-hidden="true"></i>&nbsp Concept</a>
             <ul class="collapse list-unstyled" id="concept" data-parent="#sidebar">
                 <li>
-                    <a href="http://localhost:4490/concept"><i class="fa fa-ellipsis-h" style="color:purple"aria-hidden="true"></i>&nbsp Project File</a>
+                    <a href="https://sfg-solver.herokuapp.com/concept"><i class="fa fa-ellipsis-h" style="color:purple"aria-hidden="true"></i>&nbsp Project File</a>
                 </li>
             </ul>
         </li>
@@ -113,10 +113,10 @@ Vue.component('navbar-component', {
             <i class="fa fa-cogs" aria-hidden="true" style="color:rgb(196, 5, 5)"></i>&nbsp Settings</a>
             <ul class="collapse list-unstyled" id="setting" data-parent="#sidebar">
                 <li>
-                    <a href="http://localhost:4490/settings/change_password"><i class="fa fa-ellipsis-h" style="color:rgb(196, 5, 5)"aria-hidden="true"></i>&nbsp Change Password</a>
+                    <a href="https://sfg-solver.herokuapp.com/settings/change_password"><i class="fa fa-ellipsis-h" style="color:rgb(196, 5, 5)"aria-hidden="true"></i>&nbsp Change Password</a>
                 </li>
                 <li>
-                    <a href="http://localhost:4490/settings/configrations"><i class="fa fa-ellipsis-h" style="color:rgb(196, 5, 5)"aria-hidden="true"></i>&nbsp Configurations</a>
+                    <a href="https://sfg-solver.herokuapp.com/settings/configrations"><i class="fa fa-ellipsis-h" style="color:rgb(196, 5, 5)"aria-hidden="true"></i>&nbsp Configurations</a>
                 </li>
             </ul>
         </li>
@@ -125,7 +125,7 @@ Vue.component('navbar-component', {
         
         
         <li>
-            <a href="http://localhost:4490/auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp Logout</a>
+            <a href="https://sfg-solver.herokuapp.com/auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp Logout</a>
         </li>
     </ul>
 
@@ -164,10 +164,10 @@ Vue.component('navbar-top', {
         <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown2-content">
-            <a href="http://localhost:4490/settings/profile" >Profile</a>
-            <a href="http://localhost:4490/settings/change_password" class="hov">Change Password</a>
-            <a href="http://localhost:4490/settings/configrations" class="hov">Configrations</a>
-            <a href="http://localhost:4490/auth/logout" class="hov">Logout &nbsp<i class="fa fa-sign-out" aria-hidden="true"></i> </a>
+            <a href="https://sfg-solver.herokuapp.com/settings/profile" >Profile</a>
+            <a href="https://sfg-solver.herokuapp.com/settings/change_password" class="hov">Change Password</a>
+            <a href="https://sfg-solver.herokuapp.com/settings/configrations" class="hov">Configrations</a>
+            <a href="https://sfg-solver.herokuapp.com/auth/logout" class="hov">Logout &nbsp<i class="fa fa-sign-out" aria-hidden="true"></i> </a>
           </div>
     </div>
     </div>
