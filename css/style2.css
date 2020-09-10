@@ -255,7 +255,7 @@ a.article:hover {
     border-radius: 25px
 }
 .signal{
-    min-height: 150vh;
+    min-height: 300vh;
     min-width: 100%;
     background:inherit;
 }
