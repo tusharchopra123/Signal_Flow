@@ -33,7 +33,13 @@ route.get('/middle', (req, res) => {
 route.get('/right', (req, res) => {
   res.sendFile(path.join(__dirname, '../Images/right.jpg'))
 })
-
-
-
+route.get('/Example1.jpg',(req,res)=>{
+  res.sendFile(path.join(__dirname, '../Images/Example1.jpg'))
+})
+route.get('/Example2.jpg',(req,res)=>{
+  res.sendFile(path.join(__dirname, '../Images/Example2.jpg'))
+})
+route.get('/Example3.jpg',(req,res)=>{
+  res.sendFile(path.join(__dirname, '../Images/Example3.jpg'))
+})
 module.exports = route

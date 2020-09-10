@@ -43,7 +43,7 @@ a:focus {
     width: 200px;
     top: 0;
     left: 0;
-    height: 200%;
+    height: 280%;
     z-index: 999;
     background: var(--navbar-color);
     color: var(--text);
@@ -255,7 +255,7 @@ a.article:hover {
     border-radius: 25px
 }
 .signal{
-    min-height: 300vh;
+    min-height: 190vh;
     min-width: 100%;
     background:inherit;
 }
