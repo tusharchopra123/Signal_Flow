@@ -261,3 +261,6 @@ a.article:hover {
     margin:auto;
     background:inherit;
 }
+.sfgtext p{
+    color: black !important;
+}
